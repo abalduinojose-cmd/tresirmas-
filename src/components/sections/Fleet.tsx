@@ -4,8 +4,8 @@ import { Reveal } from '../ui/Reveal'
 import { SectionTag } from '../ui/SectionTag'
 import { useAutoplayInView } from '../../hooks/useAutoplayInView'
 
-/** Card com vídeo da máquina em ação (lazy: só toca quando visível). */
-function MachineVideoCard({ machine }: { machine: Machine & { video: string } }) {
+/** Vídeo da máquina em ação (lazy: só toca quando visível). */
+function MachineVideo({ machine }: { machine: Machine & { video: string } }) {
   const videoRef = useAutoplayInView()
 
   return (
@@ -23,27 +23,32 @@ function MachineVideoCard({ machine }: { machine: Machine & { video: string } })
   )
 }
 
-/** Card placeholder claramente marcado, pronto para receber a foto. */
+/** Área de mídia enquanto a foto real não chega. */
 function MachinePlaceholder() {
   return (
     <div
       aria-hidden="true"
-      className="absolute inset-0 flex items-center justify-center bg-neutral-950"
+      className="absolute inset-0 flex items-center justify-center bg-neutral-100"
       style={{
         backgroundImage:
-          'repeating-linear-gradient(-55deg, rgba(255,255,255,0.03) 0 18px, transparent 18px 36px)',
+          'repeating-linear-gradient(-55deg, rgba(0,0,0,0.03) 0 16px, transparent 16px 32px)',
       }}
     >
-      <span className="rounded-md bg-brand px-2.5 py-1 text-[10px] font-bold tracking-[0.2em] text-black uppercase">
+      <span className="rounded-md bg-brand px-2.5 py-1 text-[10px] font-bold tracking-[0.18em] text-black uppercase">
         Foto em breve
       </span>
     </div>
   )
 }
 
+/**
+ * Catálogo da frota: cartões claros com a mídia em cima e o nome embaixo.
+ * Máquinas com vídeo ganham largura dupla no celular; as demais mostram
+ * o selo "foto em breve" até a foto real chegar.
+ */
 export function Fleet() {
   return (
-    <section id="frota" className="bg-white py-24 md:py-32">
+    <section id="frota" className="bg-neutral-50 py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionTag>Nossa frota</SectionTag>
@@ -51,75 +56,50 @@ export function Fleet() {
             Máquinas prontas para o serviço
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 md:text-lg">
-            Frota própria, revisada e operada por profissionais treinados. Veja as máquinas em
-            ação.
+            Frota própria, revisada e operada por profissionais treinados, pronta para qualquer
+            volume de obra.
           </p>
         </Reveal>
 
-        {/* Mobile: lista compacta, nomes grandes e legíveis (vídeos viram cards) */}
-        <Reveal delay={0.08}>
-          <ol className="mt-10 sm:hidden">
-            {machines.map((machine, i) =>
-              machine.video ? (
-                <li key={machine.name} className="py-3">
-                  <article className="group relative aspect-video overflow-hidden rounded-xl bg-black">
-                    <MachineVideoCard machine={{ ...machine, video: machine.video }} />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/30 to-transparent"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 p-5">
-                      <h3 className="font-display text-xl text-white">{machine.name}</h3>
-                      <p className="mt-1 text-xs leading-relaxed text-white/65">
-                        {machine.description}
-                      </p>
-                    </div>
-                  </article>
-                </li>
-              ) : (
-                <li
-                  key={machine.name}
-                  className="flex items-baseline gap-4 border-b border-neutral-200 py-4"
+        <div className="mt-12 grid grid-cols-2 gap-3.5 sm:gap-5 md:mt-14 lg:grid-cols-3">
+          {machines.map((machine, i) => (
+            <Reveal
+              key={machine.name}
+              delay={(i % 3) * 0.06}
+              className={machine.video ? 'col-span-2 lg:col-span-1' : ''}
+            >
+              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200/90 bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/60 hover:shadow-xl hover:shadow-neutral-900/10">
+                <div
+                  className={`relative overflow-hidden ${
+                    machine.video ? 'aspect-video bg-neutral-950 lg:aspect-[4/3]' : 'aspect-[4/3]'
+                  }`}
                 >
-                  <span aria-hidden="true" className="font-display shrink-0 text-sm text-brand">
+                  {machine.video ? (
+                    <MachineVideo machine={{ ...machine, video: machine.video }} />
+                  ) : (
+                    <MachinePlaceholder />
+                  )}
+
+                  {/* Número de catálogo */}
+                  <span
+                    aria-hidden="true"
+                    className="font-display absolute top-3 left-3 z-10 rounded-md bg-black/60 px-2 py-0.5 text-[11px] text-brand backdrop-blur-sm"
+                  >
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <div>
-                    <h3 className="font-display text-xl text-black">{machine.name}</h3>
-                    <p className="mt-1 text-[13px] leading-relaxed text-neutral-500">
-                      {machine.description}
-                    </p>
-                  </div>
-                </li>
-              ),
-            )}
-          </ol>
-        </Reveal>
 
-        {/* Desktop: grade com vídeos e placeholders */}
-        <div className="mt-14 hidden gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3">
-          {machines.map((machine, i) => (
-            <Reveal key={machine.name} delay={(i % 3) * 0.08}>
-              <article className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-black">
-                {machine.video ? (
-                  <MachineVideoCard machine={{ ...machine, video: machine.video }} />
-                ) : (
-                  <MachinePlaceholder />
-                )}
+                  {/* Traço no hover */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-0 -left-full z-10 h-[3px] w-full bg-brand transition-transform duration-700 ease-out group-hover:translate-x-[200%]"
+                  />
+                </div>
 
-                {/* Traço no hover */}
-                <span
-                  aria-hidden="true"
-                  className="absolute top-0 -left-full z-10 h-[3px] w-full bg-brand transition-transform duration-700 ease-out group-hover:translate-x-[200%]"
-                />
-
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/30 to-transparent"
-                />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <h3 className="font-display text-lg text-white xl:text-xl">{machine.name}</h3>
-                  <p className="mt-1 text-xs leading-relaxed text-white/65">
+                <div className="flex flex-1 flex-col justify-center px-4 py-3.5 sm:px-5 sm:py-4">
+                  <h3 className="font-display text-[15px] leading-snug text-black sm:text-lg">
+                    {machine.name}
+                  </h3>
+                  <p className="mt-1 hidden text-[13px] leading-relaxed text-neutral-500 sm:block">
                     {machine.description}
                   </p>
                 </div>

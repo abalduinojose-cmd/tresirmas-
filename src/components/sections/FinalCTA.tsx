@@ -3,15 +3,15 @@ import { Reveal } from '../ui/Reveal'
 import { ButtonLink } from '../ui/Button'
 import { IconGoogle, IconWhatsApp } from '../ui/Icons'
 
-/** CTA final: cartão dourado limpo, tudo no eixo central, uma ação só. */
+/** CTA final: cartão branco limpo, tudo no eixo central, uma ação só. */
 export function FinalCTA() {
   return (
     <section aria-label="Solicite um orçamento" className="bg-black px-5 pb-24 md:px-8 md:pb-32">
       <div className="mx-auto max-w-7xl">
         <Reveal>
-          <div className="flex flex-col items-center rounded-[2rem] bg-brand px-7 py-16 text-center md:rounded-[2.5rem] md:px-16 md:py-24">
-            <p className="flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.28em] text-black/45 uppercase">
-              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-black/40" />
+          <div className="flex flex-col items-center rounded-[2rem] bg-white px-7 py-16 text-center md:rounded-[2.5rem] md:px-16 md:py-24">
+            <p className="flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.28em] text-neutral-400 uppercase">
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand" />
               Orçamento sem compromisso
             </p>
 
@@ -19,7 +19,7 @@ export function FinalCTA() {
               Precisa de máquinas para sua obra?
             </h2>
 
-            <p className="mt-5 max-w-md text-base leading-relaxed text-black/65 md:text-lg">
+            <p className="mt-5 max-w-md text-base leading-relaxed text-neutral-600 md:text-lg">
               Chama no WhatsApp e receba a resposta de quem entende de obra.
             </p>
 
@@ -42,8 +42,8 @@ export function FinalCTA() {
               >
                 {site.phoneDisplay}
               </a>
-              <span aria-hidden="true" className="hidden h-4 w-px bg-black/20 sm:block" />
-              <p className="flex items-center gap-2 text-black/55">
+              <span aria-hidden="true" className="hidden h-4 w-px bg-neutral-200 sm:block" />
+              <p className="flex items-center gap-2 text-neutral-500">
                 <IconGoogle className="h-4 w-4" />
                 {site.googleReviewCount} avaliações no Google
               </p>
