@@ -56,7 +56,48 @@ export function Fleet() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Mobile: lista compacta, nomes grandes e legíveis (vídeos viram cards) */}
+        <Reveal delay={0.08}>
+          <ol className="mt-10 sm:hidden">
+            {machines.map((machine, i) =>
+              machine.video ? (
+                <li key={machine.name} className="py-3">
+                  <article className="group relative aspect-video overflow-hidden rounded-xl bg-black">
+                    <MachineVideoCard machine={{ ...machine, video: machine.video }} />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/30 to-transparent"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 p-5">
+                      <h3 className="font-display text-xl text-white">{machine.name}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-white/65">
+                        {machine.description}
+                      </p>
+                    </div>
+                  </article>
+                </li>
+              ) : (
+                <li
+                  key={machine.name}
+                  className="flex items-baseline gap-4 border-b border-neutral-200 py-4"
+                >
+                  <span aria-hidden="true" className="font-display shrink-0 text-sm text-brand">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-xl text-black">{machine.name}</h3>
+                    <p className="mt-1 text-[13px] leading-relaxed text-neutral-500">
+                      {machine.description}
+                    </p>
+                  </div>
+                </li>
+              ),
+            )}
+          </ol>
+        </Reveal>
+
+        {/* Desktop: grade com vídeos e placeholders */}
+        <div className="mt-14 hidden gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {machines.map((machine, i) => (
             <Reveal key={machine.name} delay={(i % 3) * 0.08}>
               <article className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-black">

@@ -146,43 +146,71 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 top-0 z-[-1] flex h-dvh flex-col justify-between bg-black px-6 pt-28 pb-10"
+            className="fixed inset-0 top-0 z-[-1] flex h-dvh flex-col justify-between gap-10 overflow-y-auto bg-black px-6 pt-28 pb-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <nav aria-label="Menu mobile">
-              <ul className="space-y-2">
-                {navLinks.map((link, i) => (
-                  <motion.li
-                    key={link.href}
-                    initial={{ opacity: 0, x: -32 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.45, delay: 0.06 * i, ease: EASE }}
-                  >
-                    <a
-                      href={link.href}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        goTo(link.href)
-                      }}
-                      className="font-display block py-2 text-4xl text-white transition-colors hover:text-brand"
+            <div>
+              <nav aria-label="Menu mobile">
+                <ul className="space-y-2">
+                  {navLinks.map((link, i) => (
+                    <motion.li
+                      key={link.href}
+                      initial={{ opacity: 0, x: -32 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.45, delay: 0.06 * i, ease: EASE }}
                     >
-                      {link.label}
-                    </a>
-                  </motion.li>
-                ))}
-              </ul>
-            </nav>
+                      <a
+                        href={link.href}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          goTo(link.href)
+                        }}
+                        className="font-display block py-2 text-4xl text-white transition-colors hover:text-brand"
+                      >
+                        {link.label}
+                      </a>
+                    </motion.li>
+                  ))}
+                </ul>
+              </nav>
+
+              {/* Texto institucional: vive só aqui no menu */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45, delay: 0.3, ease: EASE }}
+                className="mt-9 border-t border-white/10 pt-7"
+              >
+                <p className="mb-4 flex items-center gap-3 text-[10px] font-semibold tracking-[0.32em] text-white/40 uppercase">
+                  <span aria-hidden="true" className="inline-block h-px w-8 bg-brand" />
+                  Sobre a Três Irmãs
+                </p>
+                <p className="max-w-md text-sm leading-relaxed text-white/55">
+                  Fundada em 2008, somos uma empresa familiar especializada em serviços de
+                  terraplanagem. Estamos preparados para atender projetos de pequeno, médio e
+                  grande porte, oferecendo sempre soluções inteligentes e econômicas para quem
+                  precisa construir ou reformar.
+                </p>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-white/55">
+                  Nosso compromisso é agregar valor à sua obra com serviços executados dentro dos
+                  mais rigorosos padrões de qualidade e segurança. Acima de tudo, prezamos por uma
+                  relação transparente, próxima e dinâmica, garantindo um atendimento
+                  personalizado e de confiança.
+                </p>
+              </motion.div>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.45, delay: 0.35, ease: EASE }}
-              className="space-y-4"
+              transition={{ duration: 0.45, delay: 0.4, ease: EASE }}
+              className="shrink-0 space-y-4"
             >
               <a
                 href={site.whatsapp}

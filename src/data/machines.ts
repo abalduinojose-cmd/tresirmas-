@@ -3,7 +3,8 @@
  * 1. Coloque o arquivo .mp4 em /public/videos/
  * 2. Preencha `video` com '/videos/nome-do-arquivo.mp4'
  * 3. (Opcional) Gere um poster .jpg e aponte em `poster`
- * Máquinas sem `video` aparecem como card "vídeo em breve".
+ * Máquinas sem `video` aparecem como card "vídeo em breve" no desktop
+ * e como item da lista compacta no mobile.
  */
 export type Machine = {
   name: string
@@ -14,10 +15,10 @@ export type Machine = {
 
 export const machines: Machine[] = [
   {
-    name: 'Escavadeira Hidráulica',
-    description: 'Escavação e movimentação de grandes volumes de terra.',
-    video: './videos/hero-desktop.mp4',
-    poster: './videos/hero-desktop.jpg',
+    name: 'Pá Carregadeira',
+    description: 'Carregamento rápido de terra, cascalho e materiais.',
+    video: null,
+    poster: null,
   },
   {
     name: 'Retroescavadeira',
@@ -26,16 +27,16 @@ export const machines: Machine[] = [
     poster: null,
   },
   {
-    name: 'Trator de Esteira',
-    description: 'Força bruta para corte, aterro e nivelamento pesado.',
+    name: 'Motoniveladora',
+    description: 'Acabamento fino de plataformas, estradas e acessos.',
     video: null,
     poster: null,
   },
   {
-    name: 'Caminhão Basculante',
-    description: 'Transporte ágil de terra, brita e material de obra.',
-    video: null,
-    poster: null,
+    name: 'Escavadeira Hidráulica',
+    description: 'Escavação e movimentação de grandes volumes de terra.',
+    video: './videos/hero-desktop.mp4',
+    poster: './videos/hero-desktop.jpg',
   },
   {
     name: 'Rolo Compactador',
@@ -44,8 +45,26 @@ export const machines: Machine[] = [
     poster: null,
   },
   {
-    name: 'Motoniveladora',
-    description: 'Acabamento fino de plataformas, estradas e acessos.',
+    name: 'Trator com Grade',
+    description: 'Gradeamento e preparo do solo para nivelar e plantar.',
+    video: null,
+    poster: null,
+  },
+  {
+    name: "Caminhão-Pipa d'Água",
+    description: 'Água para a obra e controle de poeira nos acessos.',
+    video: null,
+    poster: null,
+  },
+  {
+    name: 'Caminhão Basculante Truck',
+    description: 'Grandes volumes de terra e cascalho por viagem.',
+    video: null,
+    poster: null,
+  },
+  {
+    name: 'Caminhão Basculante Toco',
+    description: 'Agilidade em acessos estreitos e obras urbanas.',
     video: null,
     poster: null,
   },

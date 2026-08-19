@@ -35,15 +35,14 @@ export function About() {
 
           <Reveal delay={0.12}>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-neutral-600 md:text-lg">
-              A Terraplanagem Três Irmãs realiza uma gama completa de serviços para garantir que
-              o seu projeto comece com a segurança e a precisão que ele merece: do nivelamento do
-              terreno à compactação do solo, passando por escavação, limpeza de lotes e abertura
-              de valas e fossas.
+              A Terraplanagem Três Irmãs oferece soluções completas para que sua obra comece com
+              a máxima segurança e precisão. Cuidamos de cada etapa do solo: do nivelamento e
+              compactação à escavação, limpeza de lotes e abertura de valas e fossas.
             </p>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-600 md:text-lg">
-              São 18 anos de qualidade técnica e maquinário de ponta para atender desde pequenos
-              lotes até grandes áreas industriais, sempre com equipe própria e compromisso com o
-              prazo.
+              São 18 anos de excelência técnica, maquinário próprio de ponta e equipe qualificada
+              para atender desde obras residenciais até grandes empreendimentos industriais,
+              sempre com rigor no cumprimento dos prazos.
             </p>
           </Reveal>
 
