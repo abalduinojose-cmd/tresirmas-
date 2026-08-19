@@ -110,15 +110,15 @@ export function Instagram() {
   }
 
   return (
-    <section id="instagram" className="bg-black py-24 md:py-32">
+    <section id="obras" className="bg-black py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
-          <SectionTag tone="light">Instagram</SectionTag>
+          <SectionTag tone="light">Serviços feitos</SectionTag>
           <h2 className="font-display max-w-3xl text-[1.9rem] text-white sm:text-5xl lg:text-6xl">
-            Acompanhe a obra <span className="text-brand">de perto</span>
+            Obra entregue, <span className="text-brand">de perto</span>
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/60 md:text-lg">
-            Máquinas em ação, obras entregues e o dia a dia da equipe direto do nosso perfil.
+            Serviços executados pela nossa equipe, direto do nosso perfil no Instagram.
           </p>
         </Reveal>
 

@@ -23,7 +23,7 @@ function MachineVideoCard({ machine }: { machine: Machine & { video: string } })
   )
 }
 
-/** Card placeholder claramente marcado, pronto para receber o vídeo. */
+/** Card placeholder claramente marcado, pronto para receber a foto. */
 function MachinePlaceholder() {
   return (
     <div
@@ -35,7 +35,7 @@ function MachinePlaceholder() {
       }}
     >
       <span className="rounded-md bg-brand px-2.5 py-1 text-[10px] font-bold tracking-[0.2em] text-black uppercase">
-        Vídeo em breve
+        Foto em breve
       </span>
     </div>
   )

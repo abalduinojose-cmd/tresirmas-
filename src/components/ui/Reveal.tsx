@@ -10,15 +10,19 @@ type RevealProps = {
   className?: string
 }
 
-/** Scroll-reveal padrão do site: fade + translate sutil, uma única vez. */
-export function Reveal({ children, delay = 0, y = 22, className }: RevealProps) {
+/**
+ * Scroll-reveal padrão do site: fade + subida curta, uma única vez.
+ * Deslocamento pequeno e duração enxuta para o conteúdo assentar
+ * sem chamar atenção para a própria animação.
+ */
+export function Reveal({ children, delay = 0, y = 12, className }: RevealProps) {
   return (
     <motion.div
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.85, ease: EASE, delay }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.55, ease: EASE, delay }}
     >
       {children}
     </motion.div>
