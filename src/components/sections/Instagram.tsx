@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import type { PointerEvent as ReactPointerEvent } from 'react'
 import { site } from '../../data/site'
 import { Reveal } from '../ui/Reveal'
 import { SectionTag } from '../ui/SectionTag'
@@ -90,8 +91,24 @@ function InstagramCard({
   )
 }
 
-/** Vitrine do Instagram: vídeos reais do perfil, com convite para seguir. */
+/** Vitrine do Instagram: vídeos reais do perfil em carrossel arrastável. */
 export function Instagram() {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const drag = useRef({ down: false, startX: 0, startScroll: 0 })
+
+  // Arrastar com o mouse (no touch o scroll horizontal já é nativo)
+  const onPointerDown = (e: ReactPointerEvent) => {
+    if (e.pointerType !== 'mouse' || !trackRef.current) return
+    drag.current = { down: true, startX: e.clientX, startScroll: trackRef.current.scrollLeft }
+  }
+  const onPointerMove = (e: ReactPointerEvent) => {
+    if (!drag.current.down || !trackRef.current) return
+    trackRef.current.scrollLeft = drag.current.startScroll - (e.clientX - drag.current.startX)
+  }
+  const endDrag = () => {
+    drag.current.down = false
+  }
+
   return (
     <section id="instagram" className="bg-black py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
@@ -105,13 +122,33 @@ export function Instagram() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-3">
-          {posts.map((post, i) => (
-            <Reveal key={post.video} delay={i * 0.08}>
-              <InstagramCard {...post} />
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={0.1}>
+          <div
+            ref={trackRef}
+            role="region"
+            aria-label="Vídeos do Instagram, arraste para o lado"
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={endDrag}
+            onPointerLeave={endDrag}
+            className="mt-12 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto pb-2 select-none active:cursor-grabbing lg:cursor-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {posts.map((post) => (
+              <div
+                key={post.video}
+                className="w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-2.5rem)/3)]"
+              >
+                <InstagramCard {...post} />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <p className="mt-5 text-xs text-white/40 lg:hidden">
+            Arraste para o lado para ver os vídeos.
+          </p>
+        </Reveal>
 
         <Reveal delay={0.12}>
           <div className="mt-12 flex flex-col items-center gap-4 text-center">
