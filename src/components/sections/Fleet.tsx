@@ -56,8 +56,6 @@ function MachinePlaceholder() {
  * mesmo com máquinas em vídeo, foto ou ainda sem registro.
  */
 export function Fleet() {
-  const comRegistro = machines.filter((m) => m.video || m.photo).length
-
   return (
     <section id="frota" className="bg-neutral-50 py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
@@ -124,8 +122,7 @@ export function Fleet() {
 
         <Reveal delay={0.15}>
           <p className="mt-8 text-sm text-neutral-500">
-            {comRegistro} das {machines.length} máquinas já estão registradas aqui. Procurando
-            outro equipamento?{' '}
+            Procurando outro equipamento? A frota é ampla.{' '}
             <a
               href={site.whatsapp}
               target="_blank"

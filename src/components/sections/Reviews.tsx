@@ -91,6 +91,7 @@ export function Reviews() {
             ref={trackRef}
             role="region"
             aria-label="Avaliações de clientes, arraste para o lado"
+            tabIndex={0}
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={endDrag}
@@ -140,7 +141,7 @@ export function Reviews() {
         </Reveal>
 
         <Reveal delay={0.15}>
-          <p className="mt-6 text-xs text-neutral-400">
+          <p className="mt-6 text-xs text-neutral-500">
             Avaliações públicas do perfil da {site.name} no Google. Arraste para o lado para ver
             mais.
           </p>

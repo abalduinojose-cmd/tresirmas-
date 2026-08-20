@@ -4,6 +4,12 @@ const whatsappMessage =
 /** Somente dígitos, com DDI 55. */
 const whatsappNumber = '5534991675216'
 
+/** Ano de fundação: os "X anos" do site saem daqui, para não envelhecerem. */
+export const ANO_FUNDACAO = 2008
+
+/** Anos completos de empresa, calculados a cada carregamento. */
+export const anosDeEmpresa = new Date().getFullYear() - ANO_FUNDACAO
+
 export const site = {
   name: 'Terraplanagem Três Irmãs',
   legalName: 'Terraplanagem Três Irmãs',

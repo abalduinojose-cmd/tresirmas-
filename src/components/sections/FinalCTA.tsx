@@ -10,7 +10,7 @@ export function FinalCTA() {
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <div className="flex flex-col items-center rounded-[2rem] bg-white px-7 py-14 text-center md:rounded-[2.5rem] md:px-16 md:py-20">
-            <p className="flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.28em] text-neutral-400 uppercase">
+            <p className="flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.28em] text-neutral-500 uppercase">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand" />
               Orçamento sem compromisso
             </p>

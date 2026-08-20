@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react'
-import { navLinks, site } from '../../data/site'
-import { scrollToId } from '../../hooks/useLenis'
+import { anosDeEmpresa, navLinks, site } from '../../data/site'
+import { scrollToId, travarScroll } from '../../hooks/useLenis'
 import { raizDoSite, rotaSobre } from '../../lib/rotas'
 import { Logo } from '../ui/Logo'
 import { IconArrowUpRight, IconWhatsApp } from '../ui/Icons'
@@ -23,12 +23,24 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Trava o scroll do body com o menu aberto
+  // Trava o scroll (nativo e o suave do Lenis) com o menu aberto
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
+    travarScroll(open)
     return () => {
       document.body.style.overflow = ''
+      travarScroll(false)
     }
+  }, [open])
+
+  // O menu só existe no mobile: alargar a janela com ele aberto travaria a página
+  useEffect(() => {
+    if (!open) return
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const fechar = () => mq.matches && setOpen(false)
+    fechar()
+    mq.addEventListener('change', fechar)
+    return () => mq.removeEventListener('change', fechar)
   }, [open])
 
   const goTo = (href: string) => {
@@ -155,7 +167,7 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 top-0 z-[-1] flex h-dvh flex-col justify-between gap-10 overflow-y-auto bg-black px-6 pt-28 pb-10"
+            className="fixed inset-0 top-0 z-[-1] flex h-dvh flex-col justify-between gap-10 overflow-y-auto bg-black px-6 pt-28 pb-10 lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -191,7 +203,7 @@ export function Navbar() {
                 transition={{ duration: 0.45, delay: 0.3, ease: EASE }}
                 className="mt-9 border-t border-white/10 pt-7"
               >
-                <p className="mb-4 flex items-center gap-3 text-[10px] font-semibold tracking-[0.32em] text-white/40 uppercase">
+                <p className="mb-4 flex items-center gap-3 text-[10px] font-semibold tracking-[0.32em] text-white/60 uppercase">
                   <span aria-hidden="true" className="inline-block h-px w-8 bg-brand" />
                   Sobre a Três Irmãs
                 </p>
@@ -202,7 +214,7 @@ export function Navbar() {
                   fossas.
                 </p>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-white/55">
-                  São 18 anos de excelência técnica, maquinário próprio de ponta e equipe
+                  São {anosDeEmpresa} anos de excelência técnica, maquinário próprio de ponta e equipe
                   qualificada para atender desde obras residenciais até grandes empreendimentos
                   industriais, sempre com rigor no cumprimento dos prazos.
                 </p>

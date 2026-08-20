@@ -67,7 +67,7 @@ export function Coverage() {
         </Reveal>
 
         <Reveal delay={0.2}>
-          <p className="mt-8 text-sm text-white/45">
+          <p className="mt-8 text-sm text-white/60">
             Precisa da gente na sua cidade?{' '}
             <a
               href={site.whatsapp}

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import type { ReactNode } from 'react'
-import { site } from '../../data/site'
+import { anosDeEmpresa, site } from '../../data/site'
 import { ButtonLink } from '../ui/Button'
 import { IconChevronDown, IconWhatsApp } from '../ui/Icons'
 import { useMediaQuery, usePrefersReducedMotion } from '../../hooks/useMediaQuery'
@@ -73,7 +73,7 @@ export function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
         />
         {/* Overlay escuro + fade para a transição com a próxima seção */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/55" />
@@ -120,7 +120,8 @@ export function Hero() {
           transition={{ duration: 0.7, ease: EASE, delay: 0.62 }}
           className="mt-7 max-w-xl text-base leading-relaxed text-balance text-white/80 md:text-lg"
         >
-          <strong className="font-semibold text-white">Há 18 anos</strong> movendo terra em{' '}
+          <strong className="font-semibold text-white">Há {anosDeEmpresa} anos</strong> movendo
+          terra em{' '}
           <strong className="font-semibold text-white">Uberlândia e em todo o estado de Minas
           Gerais</strong>, com maquinário de ponta e equipe qualificada do início ao fim.
         </motion.p>

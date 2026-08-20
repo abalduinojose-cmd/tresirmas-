@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
-import { site } from '../data/site'
+import { ANO_FUNDACAO, site } from '../data/site'
 import { raizDoSite } from '../lib/rotas'
+import { WhatsAppButton } from '../components/layout/WhatsAppButton'
 import { Logo } from '../components/ui/Logo'
 import { Trace } from '../components/ui/Trace'
 import { Reveal } from '../components/ui/Reveal'
@@ -9,8 +10,9 @@ import { IconArrowUpRight, IconPin, IconWhatsApp } from '../components/ui/Icons'
 
 /** Página institucional /sobre: a história da empresa em uma tela só. */
 export function SobrePage() {
+  // Mesmo título que o pos-build grava no HTML da rota, para não divergirem.
   useEffect(() => {
-    document.title = `Sobre | ${site.name}`
+    document.title = `Sobre a ${site.name} | Empresa familiar desde ${ANO_FUNDACAO}`
   }, [])
 
   const raiz = raizDoSite()
@@ -37,12 +39,13 @@ export function SobrePage() {
         <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
             <Reveal>
-              <p className="mb-5 flex items-center gap-3.5 text-[11px] font-semibold tracking-[0.32em] text-white/45 uppercase">
+              <p className="mb-5 flex items-center gap-3.5 text-[11px] font-semibold tracking-[0.32em] text-white/60 uppercase">
                 <span aria-hidden="true" className="inline-block h-px w-8 bg-brand" />
                 Sobre a Três Irmãs
               </p>
               <h1 className="font-display text-[2rem] leading-[1.08] text-white sm:text-5xl">
-                Uma empresa familiar <span className="text-brand">movendo terra</span> desde 2008
+                Uma empresa familiar <span className="text-brand">movendo terra</span> desde{' '}
+                {ANO_FUNDACAO}
               </h1>
             </Reveal>
 
@@ -77,7 +80,7 @@ export function SobrePage() {
             </Reveal>
 
             <Reveal delay={0.24}>
-              <p className="mt-10 flex items-start gap-2.5 text-sm leading-relaxed text-white/45">
+              <p className="mt-10 flex items-start gap-2.5 text-sm leading-relaxed text-white/60">
                 <IconPin className="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand" />
                 {site.address}
               </p>
@@ -109,6 +112,8 @@ export function SobrePage() {
           <p>Uberlândia · MG</p>
         </div>
       </div>
+
+      <WhatsAppButton />
     </div>
   )
 }

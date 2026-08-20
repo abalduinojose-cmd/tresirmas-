@@ -23,6 +23,16 @@ export function useLenis() {
   }, [])
 }
 
+/**
+ * Congela/retoma o scroll suave. `overflow: hidden` no body não segura o
+ * Lenis, que move a página por script: sem isso o fundo desliza atrás do
+ * menu aberto.
+ */
+export function travarScroll(travado: boolean) {
+  if (travado) lenis?.stop()
+  else lenis?.start()
+}
+
 /** Rola até uma âncora respeitando o smooth scroll (com fallback nativo). */
 export function scrollToId(id: string) {
   const el = document.getElementById(id.replace('#', ''))

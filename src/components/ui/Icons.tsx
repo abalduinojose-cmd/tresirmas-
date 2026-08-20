@@ -10,51 +10,6 @@ const stroke = {
   strokeLinejoin: 'round',
 } as const
 
-/** Camadas de terreno (terraplanagem) */
-export function IconTerrain(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...stroke} {...props}>
-      <path d="M3 18h18" />
-      <path d="M5 14l4-6 3 4 3-7 4 9" />
-      <path d="M3 21h18" strokeOpacity={0.45} />
-    </svg>
-  )
-}
-
-/** Capacete de operador */
-export function IconOperator(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...stroke} {...props}>
-      <path d="M4 15a8 8 0 0 1 16 0" />
-      <path d="M10 7.5V5a2 2 0 0 1 4 0v2.5" />
-      <path d="M2.5 15h19v2.5a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1z" />
-    </svg>
-  )
-}
-
-/** Prancheta / engenharia */
-export function IconEngineering(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...stroke} {...props}>
-      <rect x="4" y="3" width="16" height="18" rx="2" />
-      <path d="M9 3.5V6h6V3.5" />
-      <path d="M8 11h8M8 15h5" />
-    </svg>
-  )
-}
-
-/** Terreno demarcado */
-export function IconLand(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...stroke} {...props}>
-      <path d="M3 20L12 16l9 4" />
-      <path d="M5 12v4M12 9v5M19 12v4" />
-      <path d="M5 12l7-3 7 3" />
-      <circle cx="12" cy="5" r="1.6" />
-    </svg>
-  )
-}
-
 /** Pino de mapa */
 export function IconPin(props: IconProps) {
   return (
@@ -78,14 +33,6 @@ export function IconChevronDown(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...stroke} {...props}>
       <path d="M6 9l6 6 6-6" />
-    </svg>
-  )
-}
-
-export function IconPhone(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...stroke} {...props}>
-      <path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
     </svg>
   )
 }

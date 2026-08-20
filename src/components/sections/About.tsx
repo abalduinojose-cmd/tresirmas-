@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { site } from '../../data/site'
+import { useEffect, useRef, useState } from 'react'
+import { anosDeEmpresa, site } from '../../data/site'
 import { usePrefersReducedMotion } from '../../hooks/useMediaQuery'
 import { Reveal } from '../ui/Reveal'
 import { SectionTag } from '../ui/SectionTag'
@@ -36,14 +36,37 @@ const INTERVALO = 2000
 function CarrosselFotos() {
   const [atual, setAtual] = useState(0)
   const reduzido = usePrefersReducedMotion()
+  const caixaRef = useRef<HTMLDivElement>(null)
 
+  // Só troca de foto enquanto a seção está na tela: sem isso o intervalo
+  // roda a página inteira à toa.
   useEffect(() => {
-    const id = setInterval(() => setAtual((i) => (i + 1) % fotos.length), INTERVALO)
-    return () => clearInterval(id)
+    const el = caixaRef.current
+    if (!el) return
+
+    let id: ReturnType<typeof setInterval> | undefined
+    const observer = new IntersectionObserver(
+      ([entrada]) => {
+        if (entrada.isIntersecting && id === undefined) {
+          id = setInterval(() => setAtual((i) => (i + 1) % fotos.length), INTERVALO)
+        } else if (!entrada.isIntersecting && id !== undefined) {
+          clearInterval(id)
+          id = undefined
+        }
+      },
+      { threshold: 0.2 },
+    )
+    observer.observe(el)
+
+    return () => {
+      observer.disconnect()
+      if (id !== undefined) clearInterval(id)
+    }
   }, [])
 
   return (
     <div
+      ref={caixaRef}
       role="img"
       aria-label="Máquinas da Terraplanagem Três Irmãs em operação"
       className="relative aspect-[4/5] w-full sm:aspect-[16/12] lg:aspect-[4/5]"
@@ -54,8 +77,8 @@ function CarrosselFotos() {
           src={foto.src}
           alt=""
           loading={i === 0 ? 'eager' : 'lazy'}
-          className={`absolute inset-0 h-full w-full object-cover ${
-            reduzido ? '' : 'transition-opacity duration-1000 ease-out'
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity ease-out ${
+            reduzido ? 'duration-300' : 'duration-1000'
           } ${i === atual ? 'opacity-100' : 'opacity-0'}`}
         />
       ))}
@@ -107,9 +130,9 @@ export function About() {
               compactação à escavação, limpeza de lotes e abertura de valas e fossas.
             </p>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-600 md:text-lg">
-              São 18 anos de excelência técnica, maquinário próprio de ponta e equipe qualificada
-              para atender desde obras residenciais até grandes empreendimentos industriais,
-              sempre com rigor no cumprimento dos prazos.
+              São {anosDeEmpresa} anos de excelência técnica, maquinário próprio de ponta e equipe
+              qualificada para atender desde obras residenciais até grandes empreendimentos
+              industriais, sempre com rigor no cumprimento dos prazos.
             </p>
           </Reveal>
 
@@ -151,7 +174,9 @@ export function About() {
 
             {/* Selo: bloco dourado sólido, na assinatura da casa */}
             <div className="absolute bottom-5 left-5 flex items-stretch overflow-hidden rounded-xl">
-              <p className="font-display bg-brand px-4 py-2.5 text-xl leading-none text-black">18</p>
+              <p className="font-display bg-brand px-4 py-2.5 text-xl leading-none text-black">
+                {anosDeEmpresa}
+              </p>
               <p className="flex items-center bg-black/70 px-3.5 text-[10px] leading-tight font-bold tracking-[0.16em] text-white uppercase backdrop-blur-sm">
                 anos movendo
                 <br />

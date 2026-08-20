@@ -77,7 +77,7 @@ export const reviews: Review[] = [
     rating: 5,
   },
   {
-    name: 'Marıa Paula Penteado Augusto',
+    name: 'Maria Paula Penteado Augusto',
     avatar: './reviews/maria-paula.png',
     badge: 'Local Guide',
     timeAgo: 'um ano atrás',

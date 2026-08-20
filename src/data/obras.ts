@@ -15,7 +15,7 @@ export const obras: Obra[] = [
     local: 'Uberlândia',
     fotos: [
       {
-        src: './obras/base-aerea.jpg',
+        src: './obras/base-aerea.webp',
         alt: 'Vista aérea da escavação de base para construção em Uberlândia',
       },
       {
@@ -23,7 +23,7 @@ export const obras: Obra[] = [
         alt: 'Escavadeira hidráulica trabalhando na escavação da base',
       },
       {
-        src: './obras/base-pronta.jpg',
+        src: './obras/base-pronta.webp',
         alt: 'Platô nivelado e pronto para receber a construção',
       },
     ],

@@ -95,19 +95,33 @@ function InstagramCard({
 /** Vitrine do Instagram: vídeos reais do perfil em carrossel arrastável. */
 export function Instagram() {
   const trackRef = useRef<HTMLDivElement>(null)
-  const drag = useRef({ down: false, startX: 0, startScroll: 0 })
+  const drag = useRef({ down: false, startX: 0, startScroll: 0, moveu: false })
 
   // Arrastar com o mouse (no touch o scroll horizontal já é nativo)
   const onPointerDown = (e: ReactPointerEvent) => {
     if (e.pointerType !== 'mouse' || !trackRef.current) return
-    drag.current = { down: true, startX: e.clientX, startScroll: trackRef.current.scrollLeft }
+    drag.current = {
+      down: true,
+      startX: e.clientX,
+      startScroll: trackRef.current.scrollLeft,
+      moveu: false,
+    }
   }
   const onPointerMove = (e: ReactPointerEvent) => {
     if (!drag.current.down || !trackRef.current) return
-    trackRef.current.scrollLeft = drag.current.startScroll - (e.clientX - drag.current.startX)
+    const percorrido = e.clientX - drag.current.startX
+    if (Math.abs(percorrido) > 5) drag.current.moveu = true
+    trackRef.current.scrollLeft = drag.current.startScroll - percorrido
   }
   const endDrag = () => {
     drag.current.down = false
+  }
+  // Sem isto, arrastar por cima de um card dispara o play e baixa o vídeo
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (!drag.current.moveu) return
+    e.preventDefault()
+    e.stopPropagation()
+    drag.current.moveu = false
   }
 
   return (
@@ -161,10 +175,12 @@ export function Instagram() {
             ref={trackRef}
             role="region"
             aria-label="Vídeos do Instagram, arraste para o lado"
+            tabIndex={0}
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={endDrag}
             onPointerLeave={endDrag}
+            onClickCapture={onClickCapture}
             className="mt-10 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto pb-2 select-none active:cursor-grabbing lg:cursor-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {posts.map((post) => (
@@ -179,7 +195,7 @@ export function Instagram() {
         </Reveal>
 
         <Reveal delay={0.12}>
-          <p className="mt-5 text-xs text-white/40 lg:hidden">
+          <p className="mt-5 text-xs text-white/60 lg:hidden">
             Arraste para o lado para ver os vídeos.
           </p>
         </Reveal>
@@ -203,7 +219,7 @@ export function Instagram() {
                 <IconArrowUpRight className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </a>
-            <p className="text-sm text-white/40">{site.instagramHandle}</p>
+            <p className="text-sm text-white/60">{site.instagramHandle}</p>
           </div>
         </Reveal>
       </div>

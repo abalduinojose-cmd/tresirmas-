@@ -58,7 +58,7 @@ export function Footer() {
           <IconPin className="h-4.5 w-4.5 shrink-0 text-brand" />
           {site.address}
         </p>
-        <p className="mt-2 text-sm leading-relaxed text-white/40">
+        <p className="mt-2 text-sm leading-relaxed text-white/60">
           Segunda a sexta, das 7h às 18h · Atendemos todo o estado de Minas Gerais.
         </p>
 
