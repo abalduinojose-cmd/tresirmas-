@@ -11,6 +11,48 @@ export type Obra = {
 
 export const obras: Obra[] = [
   {
+    titulo: 'Bases e escavações para construção',
+    local: 'Uberlândia',
+    fotos: [
+      {
+        src: './obras/base-aerea.jpg',
+        alt: 'Vista aérea da escavação de base para construção em Uberlândia',
+      },
+      {
+        src: './obras/base-escavacao.jpg',
+        alt: 'Escavadeira hidráulica trabalhando na escavação da base',
+      },
+      {
+        src: './obras/base-pronta.jpg',
+        alt: 'Platô nivelado e pronto para receber a construção',
+      },
+    ],
+  },
+  {
+    titulo: 'Demolição e limpeza de terreno',
+    local: 'Uberlândia',
+    fotos: [
+      {
+        src: './obras/demolicao-2.jpg',
+        alt: 'Pá carregadeira na demolição e remoção de entulho',
+      },
+      {
+        src: './obras/demolicao-1.jpg',
+        alt: 'Demolição de edificação em Uberlândia',
+      },
+    ],
+  },
+  {
+    titulo: 'Bolsão para captação de água',
+    local: 'Área rural',
+    fotos: [
+      {
+        src: './obras/bolsao.jpg',
+        alt: 'Bolsão escavado para captação de água em área rural',
+      },
+    ],
+  },
+  {
     titulo: 'Desassoreamento do Rio Uberabinha',
     local: 'Usina Martins',
     fotos: [

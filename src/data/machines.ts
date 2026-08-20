@@ -46,14 +46,14 @@ export const machines: Machine[] = [
     description: 'Compactação uniforme para bases e pavimentação.',
     video: null,
     poster: null,
-    photo: null,
+    photo: './frota/rolo-compactador.jpg',
   },
   {
     name: 'Trator com Grade',
     description: 'Gradeamento e preparo do solo para nivelar e plantar.',
     video: null,
     poster: null,
-    photo: null,
+    photo: './frota/trator-grade.jpg',
   },
   {
     name: "Caminhão-Pipa d'Água",
