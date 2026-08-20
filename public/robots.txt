@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://terraplanagemtresirmas.com.br/sitemap.xml
+Sitemap: https://www.terraplanagemtresirmas.com.br/sitemap.xml

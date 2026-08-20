@@ -6,7 +6,7 @@
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 
-const SITE = 'https://terraplanagemtresirmas.com.br'
+const SITE = 'https://www.terraplanagemtresirmas.com.br'
 const TITULO = 'Sobre a Terraplanagem Três Irmãs | Empresa familiar desde 2008'
 const DESCRICAO =
   'Empresa familiar de terraplanagem fundada em 2008 em Uberlândia, MG. Conheça a história, a estrutura e o compromisso da Terraplanagem Três Irmãs com prazo, segurança e qualidade.'
