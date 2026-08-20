@@ -23,9 +23,9 @@ export const machines: Machine[] = [
   {
     name: 'Retroescavadeira',
     description: 'Versatilidade para valas, fundações e carregamento.',
-    video: './videos/retroescavadeira.mp4',
-    poster: './frota/retroescavadeira.jpg',
-    photo: null,
+    video: null,
+    poster: null,
+    photo: './frota/retroescavadeira.jpg',
   },
   {
     name: 'Motoniveladora',

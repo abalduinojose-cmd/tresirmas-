@@ -12,7 +12,7 @@ export function Stats() {
       aria-label="Números da empresa"
       className="border-b border-white/10 bg-black py-12 md:py-16"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-8 gap-y-9 px-5 md:px-8 lg:grid-cols-4 lg:gap-x-12">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-8 gap-y-9 px-5 sm:grid-cols-3 md:px-8 lg:gap-x-12">
         {stats.map((stat, i) => (
           <Reveal key={stat.label} delay={i * 0.06}>
             <p className="font-display text-brand text-[2rem] leading-none sm:text-5xl lg:text-[3.2rem]">

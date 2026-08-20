@@ -25,6 +25,10 @@ const fotos = [
     src: './sobre/4.jpg',
     alt: 'Motoniveladora e caminhões basculantes da frota prontos para o serviço',
   },
+  {
+    src: './sobre/5.jpg',
+    alt: 'Entrada da sede da Terraplanagem Três Irmãs, em Uberlândia',
+  },
 ]
 
 const INTERVALO = 2000
