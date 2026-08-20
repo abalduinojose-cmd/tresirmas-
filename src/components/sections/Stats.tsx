@@ -12,17 +12,19 @@ export function Stats() {
       aria-label="Números da empresa"
       className="border-b border-white/10 bg-black py-12 md:py-16"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-8 gap-y-9 px-5 sm:grid-cols-3 md:px-8 lg:gap-x-12">
+      <div className="mx-auto grid max-w-7xl grid-cols-3 gap-x-4 gap-y-9 px-5 sm:gap-x-8 md:px-8 lg:gap-x-12">
         {stats.map((stat, i) => (
           <Reveal key={stat.label} delay={i * 0.06}>
-            <p className="font-display text-brand text-[2rem] leading-none sm:text-5xl lg:text-[3.2rem]">
+            <p className="font-display text-brand text-[1.5rem] leading-none sm:text-4xl md:text-5xl lg:text-[3.2rem]">
               {stat.countTo != null ? (
                 <CountUp to={stat.countTo} suffix={stat.suffix ?? ''} />
               ) : (
                 stat.value
               )}
             </p>
-            <p className="mt-2.5 text-sm leading-snug text-white/55">{stat.label}</p>
+            <p className="mt-2 text-[11px] leading-snug text-white/60 sm:mt-2.5 sm:text-sm">
+              {stat.label}
+            </p>
           </Reveal>
         ))}
       </div>

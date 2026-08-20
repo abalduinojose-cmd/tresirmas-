@@ -8,19 +8,19 @@ import { IconArrowUpRight, IconInstagram, IconPlay } from '../ui/Icons'
 
 const posts = [
   {
-    video: './videos/insta-1.mp4',
-    poster: './videos/insta-1.jpg',
-    caption: 'Carga e transporte de terra',
+    video: './videos/obra-1.mp4',
+    poster: './videos/obra-1.jpg',
+    caption: 'Nivelamento de terreno para construção',
   },
   {
-    video: './videos/insta-2.mp4',
-    poster: './videos/insta-2.jpg',
+    video: './videos/obra-2.mp4',
+    poster: './videos/obra-2.jpg',
+    caption: 'Demolição e remoção de entulho',
+  },
+  {
+    video: './videos/obra-3.mp4',
+    poster: './videos/obra-3.jpg',
     caption: 'Escavação e movimentação de solo',
-  },
-  {
-    video: './videos/insta-3.mp4',
-    poster: './videos/insta-3.jpg',
-    caption: 'Frota própria em operação',
   },
 ]
 
@@ -54,7 +54,7 @@ function InstagramCard({
   }
 
   return (
-    <figure className="group relative aspect-[4/5] overflow-hidden rounded-xl bg-neutral-950">
+    <figure className="group relative aspect-[9/16] overflow-hidden rounded-2xl bg-neutral-950 ring-1 ring-white/10">
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
@@ -137,38 +137,69 @@ export function Instagram() {
           </p>
         </Reveal>
 
-        {/* Obras realizadas */}
-        {obras.map((obra) => (
-          <Reveal key={obra.titulo} delay={0.08}>
-            <div className="mt-10">
-              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-                <h3 className="font-display text-xl text-white sm:text-2xl">{obra.titulo}</h3>
-                <span className="rounded-full border border-brand/40 px-3 py-1 text-[10px] font-bold tracking-[0.18em] text-brand uppercase">
-                  {obra.local}
-                </span>
-              </div>
-              <div className="mt-6 grid grid-cols-2 gap-3.5 sm:gap-5 lg:grid-cols-3">
-                {obra.fotos.map((foto, i) => (
-                  <figure
-                    key={foto.src}
-                    className={`overflow-hidden rounded-xl bg-neutral-950 ${
-                      i === 0 ? 'col-span-2 lg:col-span-1' : ''
-                    }`}
-                  >
-                    <img
-                      src={foto.src}
-                      alt={foto.alt}
-                      loading="lazy"
-                      className={`h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-[1.04] ${
-                        i === 0 ? 'aspect-video lg:aspect-[4/3]' : 'aspect-[4/3]'
+        {/* Obras realizadas: cada uma numerada, com a foto de abertura em destaque */}
+        <div className="mt-12 space-y-12 md:mt-14 md:space-y-16">
+          {obras.map((obra, indice) => (
+            <Reveal key={obra.titulo} delay={0.06}>
+              <article className="border-t border-white/10 pt-7">
+                <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
+                  <div className="flex items-start gap-4">
+                    <span
+                      aria-hidden="true"
+                      className="font-display mt-1 text-sm text-brand/70 sm:text-base"
+                    >
+                      {String(indice + 1).padStart(2, '0')}
+                    </span>
+                    <div>
+                      <h3 className="font-display text-xl leading-tight text-white sm:text-2xl lg:text-3xl">
+                        {obra.titulo}
+                      </h3>
+                      <p className="mt-2 flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] text-white/50 uppercase">
+                        <span aria-hidden="true" className="inline-block h-px w-5 bg-brand" />
+                        {obra.local}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-white/40">
+                    {obra.fotos.length} {obra.fotos.length === 1 ? 'registro' : 'registros'}
+                  </p>
+                </div>
+
+                <div className="mt-6 grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
+                  {obra.fotos.map((foto, i) => (
+                    <figure
+                      key={foto.src}
+                      className={`group relative overflow-hidden rounded-xl bg-neutral-950 ${
+                        i === 0 ? 'col-span-2 lg:row-span-2' : ''
                       }`}
-                    />
-                  </figure>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        ))}
+                    >
+                      <img
+                        src={foto.src}
+                        alt={foto.alt}
+                        loading="lazy"
+                        className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${
+                          i === 0 ? 'aspect-[4/3] lg:aspect-square' : 'aspect-[4/3] lg:aspect-square'
+                        }`}
+                      />
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-brand/0 transition-colors duration-500 group-hover:bg-brand/10"
+                      />
+                    </figure>
+                  ))}
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Bastidores em vídeo, no formato vertical do perfil */}
+        <Reveal delay={0.08}>
+          <div className="mt-14 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-white/10 pt-7 md:mt-16">
+            <h3 className="font-display text-xl text-white sm:text-2xl">Máquinas em ação</h3>
+            <p className="text-xs text-white/50">Direto do nosso Instagram</p>
+          </div>
+        </Reveal>
 
         <Reveal delay={0.1}>
           <div
@@ -181,12 +212,12 @@ export function Instagram() {
             onPointerUp={endDrag}
             onPointerLeave={endDrag}
             onClickCapture={onClickCapture}
-            className="mt-10 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto pb-2 select-none active:cursor-grabbing lg:cursor-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="mt-6 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto pb-2 select-none active:cursor-grabbing sm:gap-5 lg:cursor-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {posts.map((post) => (
               <div
                 key={post.video}
-                className="w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[calc((100%-2.5rem)/3)]"
+                className="w-[62%] shrink-0 snap-start sm:w-[38%] lg:w-[calc((100%-2.5rem)/3)]"
               >
                 <InstagramCard {...post} />
               </div>
