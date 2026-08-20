@@ -16,7 +16,7 @@ function serviceWhatsApp(title: string) {
  */
 export function Services() {
   return (
-    <section id="servicos" className="bg-black py-24 md:py-32">
+    <section id="servicos" className="bg-black py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionTag tone="light">O que fazemos</SectionTag>
@@ -29,7 +29,7 @@ export function Services() {
           </p>
         </Reveal>
 
-        <div className="mt-14 border-b border-white/10">
+        <div className="mt-10 border-b border-white/10">
           {services.map((service, i) => (
             <Reveal key={service.title} delay={i * 0.06}>
               <a
@@ -37,7 +37,7 @@ export function Services() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Solicitar orçamento de ${service.title} pelo WhatsApp`}
-                className="group relative grid gap-3 overflow-hidden border-t border-white/10 py-8 transition-colors duration-300 hover:bg-white/[0.03] md:grid-cols-[3rem_minmax(0,1.1fr)_minmax(0,1fr)_3rem] md:items-center md:gap-6 md:py-10 lg:grid-cols-[4.5rem_minmax(0,1.15fr)_minmax(0,1fr)_3.5rem] lg:gap-8"
+                className="group relative grid gap-2.5 overflow-hidden border-t border-white/10 py-6 transition-colors duration-300 hover:bg-white/[0.03] md:grid-cols-[3rem_minmax(0,1.1fr)_minmax(0,1fr)_3rem] md:items-center md:gap-6 md:py-7 lg:grid-cols-[4.5rem_minmax(0,1.15fr)_minmax(0,1fr)_3.5rem] lg:gap-8"
               >
                 {/* Traço que atravessa a linha no hover */}
                 <span

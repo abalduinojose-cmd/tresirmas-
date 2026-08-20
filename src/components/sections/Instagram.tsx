@@ -111,7 +111,7 @@ export function Instagram() {
   }
 
   return (
-    <section id="obras" className="bg-black py-24 md:py-32">
+    <section id="obras" className="bg-black py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionTag tone="light">Serviços feitos</SectionTag>
@@ -126,7 +126,7 @@ export function Instagram() {
         {/* Obras realizadas */}
         {obras.map((obra) => (
           <Reveal key={obra.titulo} delay={0.08}>
-            <div className="mt-14">
+            <div className="mt-10">
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
                 <h3 className="font-display text-xl text-white sm:text-2xl">{obra.titulo}</h3>
                 <span className="rounded-full border border-brand/40 px-3 py-1 text-[10px] font-bold tracking-[0.18em] text-brand uppercase">
@@ -165,7 +165,7 @@ export function Instagram() {
             onPointerMove={onPointerMove}
             onPointerUp={endDrag}
             onPointerLeave={endDrag}
-            className="mt-12 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto pb-2 select-none active:cursor-grabbing lg:cursor-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="mt-10 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto pb-2 select-none active:cursor-grabbing lg:cursor-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {posts.map((post) => (
               <div
@@ -185,7 +185,7 @@ export function Instagram() {
         </Reveal>
 
         <Reveal delay={0.12}>
-          <div className="mt-12 flex flex-col items-center gap-4 text-center">
+          <div className="mt-10 flex flex-col items-center gap-4 text-center">
             <a
               href={site.instagram}
               target="_blank"

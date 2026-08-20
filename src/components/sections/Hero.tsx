@@ -81,7 +81,7 @@ export function Hero() {
 
       <motion.div
         style={reduced ? undefined : { opacity: contentOpacity }}
-        className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-36 md:px-8 md:pt-32 md:pb-40"
+        className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-24 pb-28 md:px-8 md:pt-28 md:pb-32"
       >
         <motion.p
           initial={{ opacity: 0, y: 14 }}

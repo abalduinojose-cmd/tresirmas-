@@ -38,7 +38,7 @@ export function Reviews() {
   }
 
   return (
-    <section id="avaliacoes" className="bg-neutral-50 py-24 md:py-32">
+    <section id="avaliacoes" className="bg-neutral-50 py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -95,7 +95,7 @@ export function Reviews() {
             onPointerMove={onPointerMove}
             onPointerUp={endDrag}
             onPointerLeave={endDrag}
-            className="mt-12 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto pb-4 select-none active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="mt-9 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto pb-4 select-none active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {reviews.map((review) => (
               <article

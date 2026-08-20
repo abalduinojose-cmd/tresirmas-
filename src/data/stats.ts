@@ -10,8 +10,8 @@ export type Stat = {
 }
 
 export const stats: Stat[] = [
-  { countTo: 18, suffix: '+', label: 'Anos de empresa' },
-  { countTo: 100, suffix: '%', label: 'Frota própria' },
-  { value: 'MG', label: 'Atendimento em todo o estado' },
-  { value: 'Equipe', label: 'Operadores qualificados' },
+  { countTo: 18, suffix: '+', label: 'anos movendo terra' },
+  { countTo: 9, suffix: '', label: 'equipamentos próprios' },
+  { countTo: 100, suffix: '%', label: 'frota própria e operadores treinados' },
+  { value: 'MG', label: 'atendimento em todo o estado' },
 ]

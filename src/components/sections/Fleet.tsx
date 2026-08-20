@@ -59,31 +59,23 @@ export function Fleet() {
   const comRegistro = machines.filter((m) => m.video || m.photo).length
 
   return (
-    <section id="frota" className="bg-neutral-50 py-24 md:py-32">
+    <section id="frota" className="bg-neutral-50 py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
-          <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-5">
-            <div>
-              <SectionTag>Nossa frota</SectionTag>
-              <h2 className="font-display max-w-3xl text-[1.9rem] text-black sm:text-5xl lg:text-6xl">
-                Máquinas prontas para o serviço
-              </h2>
-            </div>
-            <p className="font-display shrink-0 text-sm text-neutral-400">
-              <span className="text-brand-deep">{String(machines.length).padStart(2, '0')}</span>{' '}
-              equipamentos
-            </p>
-          </div>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 md:text-lg">
+          <SectionTag>Nossa frota</SectionTag>
+          <h2 className="font-display max-w-3xl text-[1.9rem] text-black sm:text-5xl lg:text-6xl">
+            Máquinas prontas para o serviço
+          </h2>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 md:text-lg">
             Frota própria, revisada e operada por profissionais treinados, pronta para qualquer
             volume de obra.
           </p>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 md:mt-14 lg:grid-cols-3 lg:gap-5">
+        <div className="mt-9 grid grid-cols-2 gap-3 sm:gap-4 md:mt-11 lg:grid-cols-3 lg:gap-5">
           {machines.map((machine, i) => (
             <Reveal key={machine.name} delay={(i % 3) * 0.05}>
-              <article className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-neutral-900 ring-1 ring-black/5 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-neutral-900/25 sm:rounded-2xl">
+              <article className="group relative aspect-[5/4] overflow-hidden rounded-xl bg-neutral-900 ring-1 ring-black/5 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-neutral-900/25 sm:rounded-2xl">
                 {machine.video ? (
                   <MachineVideo machine={{ ...machine, video: machine.video }} />
                 ) : machine.photo ? (
@@ -131,7 +123,7 @@ export function Fleet() {
         </div>
 
         <Reveal delay={0.15}>
-          <p className="mt-10 text-sm text-neutral-500">
+          <p className="mt-8 text-sm text-neutral-500">
             {comRegistro} das {machines.length} máquinas já estão registradas aqui. Procurando
             outro equipamento?{' '}
             <a

@@ -31,7 +31,7 @@ export function Footer() {
       {/* O traço assinatura abre o rodapé */}
       <Trace className="w-full" />
 
-      <div className="mx-auto flex max-w-3xl flex-col items-center px-5 pt-16 text-center md:px-8 md:pt-20">
+      <div className="mx-auto flex max-w-3xl flex-col items-center px-5 pt-12 text-center md:px-8 md:pt-16">
         <Logo variant="light" className="h-14 w-auto md:h-16" />
 
         {/* A tagline como peça central */}
@@ -63,7 +63,7 @@ export function Footer() {
         </p>
 
         {/* Navegação em linha, separada por pontos dourados */}
-        <nav aria-label="Navegação do rodapé" className="mt-11 w-full">
+        <nav aria-label="Navegação do rodapé" className="mt-9 w-full">
           <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2.5">
             {navLinks.map((link, i) => (
               <Fragment key={link.href}>
@@ -94,7 +94,7 @@ export function Footer() {
         </nav>
 
         {/* Redes */}
-        <div className="mt-10 flex flex-col items-center gap-3.5 pb-16 md:pb-20">
+        <div className="mt-8 flex flex-col items-center gap-3.5 pb-12 md:pb-14">
           <div className="flex gap-2.5">
             {socials.map(({ href, label, Icon }) => (
               <a

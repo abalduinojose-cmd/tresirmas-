@@ -27,7 +27,7 @@ function TopoLines() {
 
 export function Coverage() {
   return (
-    <section id="atendimento" className="relative overflow-hidden bg-black py-24 md:py-32">
+    <section id="atendimento" className="relative overflow-hidden bg-black py-16 md:py-24">
       <TopoLines />
 
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
@@ -43,7 +43,7 @@ export function Coverage() {
         </Reveal>
 
         <Reveal delay={0.12}>
-          <ul className="mt-12 flex flex-wrap gap-3">
+          <ul className="mt-9 flex flex-wrap gap-3">
             {cities.map((city) => (
               <li key={city.name}>
                 <span
@@ -67,7 +67,7 @@ export function Coverage() {
         </Reveal>
 
         <Reveal delay={0.2}>
-          <p className="mt-10 text-sm text-white/45">
+          <p className="mt-8 text-sm text-white/45">
             Precisa da gente na sua cidade?{' '}
             <a
               href={site.whatsapp}
