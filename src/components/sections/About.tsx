@@ -10,10 +10,6 @@ import { IconWhatsApp } from '../ui/Icons'
 /** Fotos reais da operação, alternadas em looping ao lado do texto. */
 const fotos = [
   {
-    src: './sobre/1.jpg',
-    alt: 'Pá carregadeira Komatsu preparando terreno em obra urbana de Uberlândia',
-  },
-  {
     src: './sobre/2.jpg',
     alt: 'Pá carregadeira movimentando terra em área aberta',
   },
@@ -24,6 +20,10 @@ const fotos = [
   {
     src: './sobre/4.jpg',
     alt: 'Motoniveladora e caminhões basculantes da frota prontos para o serviço',
+  },
+  {
+    src: './sobre/1.jpg',
+    alt: 'Pá carregadeira Komatsu preparando terreno em obra urbana de Uberlândia',
   },
   {
     src: './sobre/5.jpg',

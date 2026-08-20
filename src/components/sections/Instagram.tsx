@@ -160,9 +160,6 @@ export function Instagram() {
                       </p>
                     </div>
                   </div>
-                  <p className="text-xs text-white/40">
-                    {obra.fotos.length} {obra.fotos.length === 1 ? 'registro' : 'registros'}
-                  </p>
                 </div>
 
                 <div className="mt-6 grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">

@@ -29,6 +29,30 @@ export const obras: Obra[] = [
     ],
   },
   {
+    titulo: 'Nivelamento e preparo de platô',
+    local: 'Uberlândia',
+    fotos: [
+      {
+        src: './obras/nivelamento-urbano.jpg',
+        alt: 'Pá carregadeira nivelando o terreno rebaixado de uma obra em Uberlândia',
+      },
+      {
+        src: './obras/plato-pronto.jpg',
+        alt: 'Platô nivelado e compactado, pronto para o início da construção',
+      },
+    ],
+  },
+  {
+    titulo: 'Terraplenagem em área rural',
+    local: 'Região de Uberlândia',
+    fotos: [
+      {
+        src: './obras/rural-komatsu.jpg',
+        alt: 'Pá carregadeira Komatsu preparando o terreno em propriedade rural',
+      },
+    ],
+  },
+  {
     titulo: 'Bolsão para captação de água',
     local: 'Área rural',
     fotos: [
