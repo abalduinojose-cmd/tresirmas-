@@ -1,9 +1,67 @@
+import { useEffect, useState } from 'react'
 import { site } from '../../data/site'
+import { usePrefersReducedMotion } from '../../hooks/useMediaQuery'
 import { Reveal } from '../ui/Reveal'
 import { SectionTag } from '../ui/SectionTag'
 import { Trace } from '../ui/Trace'
 import { ButtonLink } from '../ui/Button'
 import { IconWhatsApp } from '../ui/Icons'
+
+/** Fotos reais da operação, alternadas em looping ao lado do texto. */
+const fotos = [
+  {
+    src: './sobre/1.jpg',
+    alt: 'Pá carregadeira Komatsu preparando terreno em obra urbana de Uberlândia',
+  },
+  {
+    src: './sobre/2.jpg',
+    alt: 'Pá carregadeira movimentando terra em área aberta',
+  },
+  {
+    src: './sobre/3.jpg',
+    alt: 'Escavadeira hidráulica escavando o solo em obra da Três Irmãs',
+  },
+  {
+    src: './sobre/4.jpg',
+    alt: 'Motoniveladora e caminhões basculantes da frota prontos para o serviço',
+  },
+]
+
+const INTERVALO = 2000
+
+/**
+ * Alterna as fotos da operação a cada 2 segundos, em looping. Quem pede menos
+ * movimento continua vendo todas as fotos, só sem a dissolvência.
+ */
+function CarrosselFotos() {
+  const [atual, setAtual] = useState(0)
+  const reduzido = usePrefersReducedMotion()
+
+  useEffect(() => {
+    const id = setInterval(() => setAtual((i) => (i + 1) % fotos.length), INTERVALO)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <div
+      role="img"
+      aria-label="Máquinas da Terraplanagem Três Irmãs em operação"
+      className="relative aspect-[4/5] w-full sm:aspect-[16/12] lg:aspect-[4/5]"
+    >
+      {fotos.map((foto, i) => (
+        <img
+          key={foto.src}
+          src={foto.src}
+          alt=""
+          loading={i === 0 ? 'eager' : 'lazy'}
+          className={`absolute inset-0 h-full w-full object-cover ${
+            reduzido ? '' : 'transition-opacity duration-1000 ease-out'
+          } ${i === atual ? 'opacity-100' : 'opacity-0'}`}
+        />
+      ))}
+    </div>
+  )
+}
 
 const bullets = [
   'Nivelamento de terrenos',
@@ -26,7 +84,7 @@ export function About() {
           <Reveal>
             <SectionTag>A empresa</SectionTag>
             <h2 className="font-display text-[1.75rem] text-black sm:text-5xl lg:text-6xl">
-              Toda grande obra começa por uma <span className="text-brand-deep">base sólida</span>
+              Toda grande obra começa por uma <span className="text-brand">base sólida</span>
             </h2>
           </Reveal>
 
@@ -70,12 +128,7 @@ export function About() {
         {/* Mídia com o selo dos 18 anos */}
         <Reveal delay={0.15} className="relative">
           <div className="relative overflow-hidden rounded-2xl bg-black">
-            <img
-              src="./sobre-maquina.jpg"
-              alt="Pá carregadeira da Terraplanagem Três Irmãs preparando o terreno em obra urbana de Uberlândia"
-              loading="lazy"
-              className="aspect-[4/5] w-full object-cover sm:aspect-[16/12] lg:aspect-[4/5]"
-            />
+            <CarrosselFotos />
             <div
               aria-hidden="true"
               className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"
