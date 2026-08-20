@@ -32,7 +32,7 @@ export const machines: Machine[] = [
     description: 'Acabamento fino de plataformas, estradas e acessos.',
     video: null,
     poster: null,
-    photo: null,
+    photo: './frota/motoniveladora.jpg',
   },
   {
     name: 'Escavadeira Hidráulica',

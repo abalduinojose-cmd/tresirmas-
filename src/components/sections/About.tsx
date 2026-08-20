@@ -4,7 +4,6 @@ import { SectionTag } from '../ui/SectionTag'
 import { Trace } from '../ui/Trace'
 import { ButtonLink } from '../ui/Button'
 import { IconWhatsApp } from '../ui/Icons'
-import { useAutoplayInView } from '../../hooks/useAutoplayInView'
 
 const bullets = [
   'Nivelamento de terrenos',
@@ -19,8 +18,6 @@ const bullets = [
  * por cima do vídeo do hero, criando a transição suave entre as duas partes.
  */
 export function About() {
-  const videoRef = useAutoplayInView()
-
   return (
     <section id="sobre" className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-white pt-20 pb-24 md:rounded-t-[3.5rem] md:pt-28 md:pb-32">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
@@ -28,8 +25,8 @@ export function About() {
         <div>
           <Reveal>
             <SectionTag>A empresa</SectionTag>
-            <h2 className="font-display text-[1.9rem] text-black sm:text-5xl lg:text-6xl">
-              Sua obra começa no chão certo
+            <h2 className="font-display text-[1.75rem] text-black sm:text-5xl lg:text-6xl">
+              Toda grande obra começa por uma <span className="text-brand-deep">base sólida</span>
             </h2>
           </Reveal>
 
@@ -70,19 +67,14 @@ export function About() {
           </Reveal>
         </div>
 
-        {/* Mídia com selo "Desde 2006" */}
+        {/* Mídia com o selo dos 18 anos */}
         <Reveal delay={0.15} className="relative">
           <div className="relative overflow-hidden rounded-2xl bg-black">
-            <video
-              ref={videoRef}
+            <img
+              src="./sobre-maquina.jpg"
+              alt="Pá carregadeira da Terraplanagem Três Irmãs preparando o terreno em obra urbana de Uberlândia"
+              loading="lazy"
               className="aspect-[4/5] w-full object-cover sm:aspect-[16/12] lg:aspect-[4/5]"
-              src="./videos/sobre.mp4"
-              poster="./videos/sobre.jpg"
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Máquina em operação"
             />
             <div
               aria-hidden="true"

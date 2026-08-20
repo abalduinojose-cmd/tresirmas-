@@ -7,6 +7,7 @@ import { Trace } from '../ui/Trace'
 import {
   IconArrowUpRight,
   IconFacebook,
+  IconGoogleMono,
   IconInstagram,
   IconPin,
   IconWhatsApp,
@@ -15,6 +16,7 @@ import {
 // Redes sem link cadastrado ficam ocultas automaticamente.
 const socials = [
   { href: site.instagram, label: `Instagram da ${site.name}`, Icon: IconInstagram },
+  { href: site.googleProfile, label: `Perfil da ${site.name} no Google`, Icon: IconGoogleMono },
   { href: site.facebook, label: `Facebook da ${site.name}`, Icon: IconFacebook },
 ].filter((social) => social.href)
 

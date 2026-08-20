@@ -132,6 +132,15 @@ export function IconFacebook(props: IconProps) {
   )
 }
 
+/** G do Google em uma cor só, para conviver com os demais ícones do rodapé. */
+export function IconGoogleMono(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" {...props}>
+      <path d="M12 10.9v2.9h4.7c-.2 1.2-1.5 3.6-4.7 3.6-2.8 0-5.1-2.3-5.1-5.2s2.3-5.2 5.1-5.2c1.6 0 2.7.7 3.3 1.3l2.2-2.2C16.1 4.8 14.2 4 12 4c-4.4 0-8 3.6-8 8s3.6 8 8 8c4.6 0 7.7-3.3 7.7-7.9 0-.5 0-.9-.1-1.2z" />
+    </svg>
+  )
+}
+
 /** G colorido do Google */
 export function IconGoogle(props: IconProps) {
   return (
