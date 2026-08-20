@@ -27,7 +27,7 @@ export function About() {
         {/* Texto institucional */}
         <div>
           <Reveal>
-            <SectionTag>Quem somos</SectionTag>
+            <SectionTag>A empresa</SectionTag>
             <h2 className="font-display text-[1.9rem] text-black sm:text-5xl lg:text-6xl">
               Sua obra começa no chão certo
             </h2>

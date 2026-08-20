@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { navLinks, site } from '../../data/site'
 import { scrollToId } from '../../hooks/useLenis'
+import { raizDoSite } from '../../lib/rotas'
 import { Logo } from '../ui/Logo'
 import { Trace } from '../ui/Trace'
 import {
@@ -71,11 +72,15 @@ export function Footer() {
                 )}
                 <li>
                   <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      scrollToId(link.href)
-                    }}
+                    {...(link.href.startsWith('#')
+                      ? {
+                          href: link.href,
+                          onClick: (e: React.MouseEvent) => {
+                            e.preventDefault()
+                            scrollToId(link.href)
+                          },
+                        }
+                      : { href: `${raizDoSite()}${link.href}` })}
                     className="inline-block text-[11px] font-bold tracking-[0.22em] text-white/55 uppercase italic transition-colors duration-200 hover:text-brand"
                   >
                     {link.label}

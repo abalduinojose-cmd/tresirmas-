@@ -29,20 +29,6 @@ export const obras: Obra[] = [
     ],
   },
   {
-    titulo: 'Demolição e limpeza de terreno',
-    local: 'Uberlândia',
-    fotos: [
-      {
-        src: './obras/demolicao-2.jpg',
-        alt: 'Pá carregadeira na demolição e remoção de entulho',
-      },
-      {
-        src: './obras/demolicao-1.jpg',
-        alt: 'Demolição de edificação em Uberlândia',
-      },
-    ],
-  },
-  {
     titulo: 'Bolsão para captação de água',
     local: 'Área rural',
     fotos: [

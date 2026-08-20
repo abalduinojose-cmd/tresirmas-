@@ -1,5 +1,7 @@
 import { MotionConfig } from 'motion/react'
 import { useLenis } from './hooks/useLenis'
+import { estaNoSobre } from './lib/rotas'
+import { SobrePage } from './pages/SobrePage'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import { WhatsAppButton } from './components/layout/WhatsAppButton'
@@ -13,8 +15,19 @@ import { Reviews } from './components/sections/Reviews'
 import { Coverage } from './components/sections/Coverage'
 import { FinalCTA } from './components/sections/FinalCTA'
 
+// Avaliado uma vez por carregamento: a URL não muda sem recarregar a página.
+const NO_SOBRE = estaNoSobre()
+
 export default function App() {
   useLenis()
+
+  if (NO_SOBRE) {
+    return (
+      <MotionConfig reducedMotion="user">
+        <SobrePage />
+      </MotionConfig>
+    )
+  }
 
   return (
     <MotionConfig reducedMotion="user">

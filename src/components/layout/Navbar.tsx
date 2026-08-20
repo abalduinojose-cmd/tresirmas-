@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react'
 import { navLinks, site } from '../../data/site'
 import { scrollToId } from '../../hooks/useLenis'
+import { raizDoSite, rotaSobre } from '../../lib/rotas'
 import { Logo } from '../ui/Logo'
 import { IconArrowUpRight, IconWhatsApp } from '../ui/Icons'
 
@@ -35,6 +36,18 @@ export function Navbar() {
     // espera o menu fechar antes de rolar
     requestAnimationFrame(() => scrollToId(href))
   }
+
+  /** Links de âncora rolam a página; os demais navegam para a rota. */
+  const linkProps = (href: string) =>
+    href.startsWith('#')
+      ? {
+          href,
+          onClick: (e: React.MouseEvent) => {
+            e.preventDefault()
+            goTo(href)
+          },
+        }
+      : { href: `${raizDoSite()}${href}` }
 
   return (
     <header
@@ -80,11 +93,7 @@ export function Navbar() {
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault()
-                  goTo(link.href)
-                }}
+                {...linkProps(link.href)}
                 className="group relative text-sm font-semibold tracking-wider text-white/85 uppercase transition-colors hover:text-white"
               >
                 {link.label}
@@ -164,11 +173,7 @@ export function Navbar() {
                       transition={{ duration: 0.45, delay: 0.06 * i, ease: EASE }}
                     >
                       <a
-                        href={link.href}
-                        onClick={(e) => {
-                          e.preventDefault()
-                          goTo(link.href)
-                        }}
+                        {...linkProps(link.href)}
                         className="font-display block py-2 text-4xl text-white transition-colors hover:text-brand"
                       >
                         {link.label}
@@ -202,11 +207,7 @@ export function Navbar() {
                   industriais, sempre com rigor no cumprimento dos prazos.
                 </p>
                 <a
-                  href="#sobre"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    goTo('#sobre')
-                  }}
+                  href={rotaSobre()}
                   className="mt-5 inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-brand uppercase italic transition-colors hover:text-white"
                 >
                   Conhecer a empresa

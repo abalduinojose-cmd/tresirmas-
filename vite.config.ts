@@ -30,9 +30,12 @@ function savePoster(): Plugin {
   }
 }
 
-export default defineConfig({
+// Base relativa no build (GitHub Pages em subpasta); absoluta no dev para a
+// rota /sobre resolver os módulos. O pós-build injeta <base href="../"> na
+// cópia docs/sobre/index.html (ver scripts/pos-build.mjs).
+export default defineConfig(({ command }) => ({
   plugins: [react(), tailwindcss(), savePoster()],
   server: { port: Number(process.env.PORT) || 5202 },
-  base: './',
+  base: command === 'serve' ? '/' : './',
   build: { outDir: 'docs' },
-})
+}))

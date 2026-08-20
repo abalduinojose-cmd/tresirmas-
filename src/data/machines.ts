@@ -16,9 +16,9 @@ export const machines: Machine[] = [
   {
     name: 'Pá Carregadeira',
     description: 'Carregamento rápido de terra, cascalho e materiais.',
-    video: './videos/pa-carregadeira.mp4',
-    poster: './frota/pa-carregadeira.jpg',
-    photo: null,
+    video: null,
+    poster: null,
+    photo: './frota/pa-carregadeira.webp',
   },
   {
     name: 'Retroescavadeira',
@@ -53,7 +53,7 @@ export const machines: Machine[] = [
     description: 'Gradeamento e preparo do solo para nivelar e plantar.',
     video: null,
     poster: null,
-    photo: './frota/trator-grade.jpg',
+    photo: null,
   },
   {
     name: "Caminhão-Pipa d'Água",

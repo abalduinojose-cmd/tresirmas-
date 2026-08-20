@@ -29,8 +29,9 @@ export const cities = [
   { name: 'Todo o estado de Minas', highlight: false },
 ] as const
 
+// Itens sem "#" são páginas próprias (resolvidas por src/lib/rotas.ts).
 export const navLinks = [
-  { label: 'Sobre', href: '#sobre' },
+  { label: 'Sobre', href: 'sobre' },
   { label: 'Serviços', href: '#servicos' },
   { label: 'Frota', href: '#frota' },
   { label: 'Serviços feitos', href: '#obras' },
