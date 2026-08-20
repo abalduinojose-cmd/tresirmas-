@@ -191,17 +191,27 @@ export function Navbar() {
                   Sobre a Três Irmãs
                 </p>
                 <p className="max-w-md text-sm leading-relaxed text-white/55">
-                  Fundada em 2008, somos uma empresa familiar especializada em serviços de
-                  terraplanagem. Estamos preparados para atender projetos de pequeno, médio e
-                  grande porte, oferecendo sempre soluções inteligentes e econômicas para quem
-                  precisa construir ou reformar.
+                  A Terraplanagem Três Irmãs oferece soluções completas para que sua obra comece
+                  com a máxima segurança e precisão. Cuidamos de cada etapa do solo: do
+                  nivelamento e compactação à escavação, limpeza de lotes e abertura de valas e
+                  fossas.
                 </p>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-white/55">
-                  Nosso compromisso é agregar valor à sua obra com serviços executados dentro dos
-                  mais rigorosos padrões de qualidade e segurança. Acima de tudo, prezamos por uma
-                  relação transparente, próxima e dinâmica, garantindo um atendimento
-                  personalizado e de confiança.
+                  São 18 anos de excelência técnica, maquinário próprio de ponta e equipe
+                  qualificada para atender desde obras residenciais até grandes empreendimentos
+                  industriais, sempre com rigor no cumprimento dos prazos.
                 </p>
+                <a
+                  href="#sobre"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    goTo('#sobre')
+                  }}
+                  className="mt-5 inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-brand uppercase italic transition-colors hover:text-white"
+                >
+                  Conhecer a empresa
+                  <IconArrowUpRight className="h-3.5 w-3.5" />
+                </a>
               </motion.div>
             </div>
 

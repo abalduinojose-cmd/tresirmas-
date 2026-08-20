@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import type { PointerEvent as ReactPointerEvent } from 'react'
 import { site } from '../../data/site'
+import { obras } from '../../data/obras'
 import { Reveal } from '../ui/Reveal'
 import { SectionTag } from '../ui/SectionTag'
 import { IconArrowUpRight, IconInstagram, IconPlay } from '../ui/Icons'
@@ -118,9 +119,42 @@ export function Instagram() {
             Obra entregue, <span className="text-brand">de perto</span>
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/60 md:text-lg">
-            Serviços executados pela nossa equipe, direto do nosso perfil no Instagram.
+            Obras executadas pela nossa equipe e o dia a dia das máquinas no nosso perfil.
           </p>
         </Reveal>
+
+        {/* Obras realizadas */}
+        {obras.map((obra) => (
+          <Reveal key={obra.titulo} delay={0.08}>
+            <div className="mt-14">
+              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                <h3 className="font-display text-xl text-white sm:text-2xl">{obra.titulo}</h3>
+                <span className="rounded-full border border-brand/40 px-3 py-1 text-[10px] font-bold tracking-[0.18em] text-brand uppercase">
+                  {obra.local}
+                </span>
+              </div>
+              <div className="mt-6 grid grid-cols-2 gap-3.5 sm:gap-5 lg:grid-cols-3">
+                {obra.fotos.map((foto, i) => (
+                  <figure
+                    key={foto.src}
+                    className={`overflow-hidden rounded-xl bg-neutral-950 ${
+                      i === 0 ? 'col-span-2 lg:col-span-1' : ''
+                    }`}
+                  >
+                    <img
+                      src={foto.src}
+                      alt={foto.alt}
+                      loading="lazy"
+                      className={`h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-[1.04] ${
+                        i === 0 ? 'aspect-video lg:aspect-[4/3]' : 'aspect-[4/3]'
+                      }`}
+                    />
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        ))}
 
         <Reveal delay={0.1}>
           <div

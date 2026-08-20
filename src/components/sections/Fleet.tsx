@@ -71,11 +71,18 @@ export function Fleet() {
               <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200/90 bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/60 hover:shadow-xl hover:shadow-neutral-900/10">
                 <div
                   className={`relative overflow-hidden ${
-                    machine.video ? 'aspect-video bg-neutral-950 lg:aspect-[4/3]' : 'aspect-[4/3]'
+                    machine.video ? 'aspect-video bg-neutral-950 lg:aspect-[4/3]' : 'aspect-[4/3] bg-neutral-100'
                   }`}
                 >
                   {machine.video ? (
                     <MachineVideo machine={{ ...machine, video: machine.video }} />
+                  ) : machine.photo ? (
+                    <img
+                      src={machine.photo}
+                      alt={`${machine.name} da frota em operação`}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                    />
                   ) : (
                     <MachinePlaceholder />
                   )}
