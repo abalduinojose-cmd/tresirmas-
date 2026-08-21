@@ -134,7 +134,7 @@ export function Hero() {
         >
           <ButtonLink href={site.whatsapp} target="_blank" rel="noopener noreferrer">
             <IconWhatsApp className="h-4.5 w-4.5" />
-            Solicitar Orçamento
+            Solicitar orçamento
           </ButtonLink>
           <ButtonLink
             href="#frota"
@@ -144,7 +144,7 @@ export function Hero() {
               scrollToId('#frota')
             }}
           >
-            Nossas Máquinas
+            Nossas máquinas
           </ButtonLink>
         </motion.div>
       </motion.div>

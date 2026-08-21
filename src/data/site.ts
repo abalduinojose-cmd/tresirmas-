@@ -25,6 +25,8 @@ export const site = {
   address: 'Rua Pedro Mamede, 70, Vida Nova, Uberlândia, MG · CEP 38409-053',
   city: 'Uberlândia, MG',
   googleProfile: 'https://share.google/cKfY6JdqiluKqZL7H',
+  googleMaps:
+    'https://www.google.com/maps/search/?api=1&query=Terraplanagem%20Tr%C3%AAs%20Irm%C3%A3s%2C%20Rua%20Pedro%20Mamede%2C%2070%2C%20Vida%20Nova%2C%20Uberl%C3%A2ndia%20-%20MG',
   googleRating: '4,4',
   googleReviewCount: 53,
 } as const

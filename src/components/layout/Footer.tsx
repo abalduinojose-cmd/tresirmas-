@@ -9,7 +9,7 @@ import {
   IconFacebook,
   IconGoogleMono,
   IconInstagram,
-  IconPin,
+  IconMapPin,
   IconWhatsApp,
 } from '../ui/Icons'
 
@@ -17,6 +17,7 @@ import {
 const socials = [
   { href: site.instagram, label: `Instagram da ${site.name}`, Icon: IconInstagram },
   { href: site.googleProfile, label: `Perfil da ${site.name} no Google`, Icon: IconGoogleMono },
+  { href: site.googleMaps, label: `Ver a ${site.name} no Google Maps`, Icon: IconMapPin },
   { href: site.facebook, label: `Facebook da ${site.name}`, Icon: IconFacebook },
 ].filter((social) => social.href)
 
@@ -54,11 +55,7 @@ export function Footer() {
           </span>
         </a>
 
-        <p className="mt-6 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-sm leading-relaxed text-white/55">
-          <IconPin className="h-4.5 w-4.5 shrink-0 text-brand" />
-          {site.address}
-        </p>
-        <p className="mt-2 text-sm leading-relaxed text-white/60">
+        <p className="mt-6 text-sm leading-relaxed text-white/60">
           Segunda a sexta, das 7h às 18h · Atendemos todo o estado de Minas Gerais.
         </p>
 

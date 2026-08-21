@@ -79,6 +79,15 @@ export function IconFacebook(props: IconProps) {
   )
 }
 
+/** Pino do Google Maps, sólido, para o rodapé. */
+export function IconMapPin(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" {...props}>
+      <path d="M12 2a7.5 7.5 0 0 0-7.5 7.5C4.5 15.4 12 22 12 22s7.5-6.6 7.5-12.5A7.5 7.5 0 0 0 12 2m0 10.2a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4" />
+    </svg>
+  )
+}
+
 /** G do Google em uma cor só, para conviver com os demais ícones do rodapé. */
 export function IconGoogleMono(props: IconProps) {
   return (

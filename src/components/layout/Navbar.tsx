@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react'
-import { anosDeEmpresa, navLinks, site } from '../../data/site'
+import { navLinks, site } from '../../data/site'
 import { scrollToId, travarScroll } from '../../hooks/useLenis'
-import { raizDoSite, rotaSobre } from '../../lib/rotas'
+import { raizDoSite } from '../../lib/rotas'
 import { Logo } from '../ui/Logo'
 import { IconArrowUpRight, IconWhatsApp } from '../ui/Icons'
 
@@ -123,19 +123,10 @@ export function Navbar() {
             href={site.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative hidden items-center gap-2.5 overflow-hidden rounded-full bg-brand py-1.5 pr-1.5 pl-5 text-sm font-bold tracking-wider text-black uppercase italic transition-shadow duration-200 hover:shadow-lg hover:shadow-brand/30 sm:inline-flex"
+            className="group hidden min-h-11 items-center gap-2.5 rounded-full bg-brand px-5 text-[13px] font-semibold tracking-[0.02em] text-black transition-all duration-300 hover:brightness-105 hover:shadow-lg hover:shadow-brand/25 sm:inline-flex"
           >
-            <span
-              aria-hidden="true"
-              className="absolute inset-y-0 -left-full w-full -skew-x-[20deg] bg-black/15 transition-transform duration-500 ease-out group-hover:translate-x-[220%]"
-            />
-            <span className="relative">Solicitar Orçamento</span>
-            <span
-              aria-hidden="true"
-              className="relative flex h-8 w-8 items-center justify-center rounded-full bg-black/10 transition-transform duration-300 ease-out group-hover:scale-110"
-            >
-              <IconArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </span>
+            Solicitar orçamento
+            <IconArrowUpRight className="h-4 w-4 opacity-70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
           </a>
 
           {/* Botão menu mobile */}
@@ -195,7 +186,7 @@ export function Navbar() {
                 </ul>
               </nav>
 
-              {/* Texto institucional: vive só aqui no menu */}
+              {/* Atalho direto para a frota */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -203,27 +194,16 @@ export function Navbar() {
                 transition={{ duration: 0.45, delay: 0.3, ease: EASE }}
                 className="mt-9 border-t border-white/10 pt-7"
               >
-                <p className="mb-4 flex items-center gap-3 text-[10px] font-semibold tracking-[0.32em] text-white/60 uppercase">
-                  <span aria-hidden="true" className="inline-block h-px w-8 bg-brand" />
-                  Sobre a Três Irmãs
-                </p>
-                <p className="max-w-md text-sm leading-relaxed text-white/55">
-                  A Terraplanagem Três Irmãs oferece soluções completas para que sua obra comece
-                  com a máxima segurança e precisão. Cuidamos de cada etapa do solo: do
-                  nivelamento e compactação à escavação, limpeza de lotes e abertura de valas e
-                  fossas.
-                </p>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-white/55">
-                  São {anosDeEmpresa} anos de excelência técnica, maquinário próprio de ponta e equipe
-                  qualificada para atender desde obras residenciais até grandes empreendimentos
-                  industriais, sempre com rigor no cumprimento dos prazos.
-                </p>
                 <a
-                  href={rotaSobre()}
-                  className="mt-5 inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-brand uppercase italic transition-colors hover:text-white"
+                  href="#frota"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    goTo('#frota')
+                  }}
+                  className="group inline-flex min-h-12 items-center gap-2.5 rounded-full border border-white/25 px-6 text-sm font-semibold text-white transition-all duration-300 hover:border-brand hover:bg-brand hover:text-black"
                 >
-                  Conhecer a empresa
-                  <IconArrowUpRight className="h-3.5 w-3.5" />
+                  Conhecer a frota
+                  <IconArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </motion.div>
             </div>
@@ -239,10 +219,10 @@ export function Navbar() {
                 href={site.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-13 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-base font-bold tracking-wider text-black uppercase italic"
+                className="flex min-h-13 items-center justify-center gap-2.5 rounded-full bg-brand px-6 py-3.5 text-[15px] font-semibold tracking-[0.02em] text-black"
               >
                 <IconWhatsApp className="h-5 w-5" />
-                Solicitar Orçamento
+                Solicitar orçamento
               </a>
               <p className="text-center text-sm text-white/50">
                 {site.phoneDisplay} · {site.city}

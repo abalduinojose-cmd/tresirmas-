@@ -7,41 +7,26 @@ type ButtonLinkProps = {
 } & AnchorHTMLAttributes<HTMLAnchorElement>
 
 const base =
-  'group relative inline-flex min-h-13 cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-full py-2 pl-7 pr-2 text-sm font-bold tracking-widest uppercase italic transition-all duration-200 ease-out active:scale-[0.97]'
+  'group inline-flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full px-6 text-[13px] font-semibold tracking-[0.04em] transition-all duration-300 ease-out active:scale-[0.98] sm:text-sm'
 
 const variants = {
-  primary: 'bg-brand text-black hover:shadow-lg hover:shadow-brand/30',
-  outline: 'border-2 border-white/70 text-white hover:border-white hover:bg-white/10',
-  dark: 'bg-black text-white hover:shadow-lg hover:shadow-black/30',
-} as const
-
-const coins = {
-  primary: 'bg-black/10 text-black',
-  outline: 'bg-white/15 text-white',
-  dark: 'bg-white/15 text-brand',
+  primary: 'bg-brand text-black hover:shadow-lg hover:shadow-brand/25 hover:brightness-105',
+  outline: 'border border-white/25 text-white hover:border-white/70 hover:bg-white/[0.07]',
+  dark: 'bg-black text-white hover:bg-neutral-800',
 } as const
 
 /**
- * CTA do site: pill com "moeda" de seta na ponta. No hover, o traço
- * atravessa o botão e a seta avança, como o corte do logo.
+ * CTA do site: pill limpa, sem itálico nem moeda. A seta desliza para a
+ * direita no hover, dando a direção sem poluir o botão.
  */
 export function ButtonLink({ variant = 'primary', children, ...rest }: ButtonLinkProps) {
-  const traceColor =
-    variant === 'primary' ? 'bg-black/15' : variant === 'dark' ? 'bg-brand/40' : 'bg-white/25'
-
   return (
     <a className={`${base} ${variants[variant]}`} {...rest}>
-      <span
+      <span className="inline-flex items-center gap-2.5">{children}</span>
+      <IconArrowUpRight
         aria-hidden="true"
-        className={`absolute inset-y-0 -left-full w-full -skew-x-[20deg] ${traceColor} transition-transform duration-500 ease-out group-hover:translate-x-[220%]`}
+        className="h-4 w-4 shrink-0 opacity-70 transition-all duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
       />
-      <span className="relative z-10 inline-flex items-center gap-2.5">{children}</span>
-      <span
-        aria-hidden="true"
-        className={`relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${coins[variant]} transition-transform duration-300 ease-out group-hover:scale-110`}
-      >
-        <IconArrowUpRight className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </span>
     </a>
   )
 }

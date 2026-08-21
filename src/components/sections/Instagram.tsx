@@ -137,29 +137,19 @@ export function Instagram() {
           </p>
         </Reveal>
 
-        {/* Obras realizadas: cada uma numerada, com a foto de abertura em destaque */}
+        {/* Obras realizadas, com a foto de abertura em destaque */}
         <div className="mt-12 space-y-12 md:mt-14 md:space-y-16">
-          {obras.map((obra, indice) => (
+          {obras.map((obra) => (
             <Reveal key={obra.titulo} delay={0.06}>
               <article className="border-t border-white/10 pt-7">
-                <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-                  <div className="flex items-start gap-4">
-                    <span
-                      aria-hidden="true"
-                      className="font-display mt-1 text-sm text-brand/70 sm:text-base"
-                    >
-                      {String(indice + 1).padStart(2, '0')}
-                    </span>
-                    <div>
-                      <h3 className="font-display text-xl leading-tight text-white sm:text-2xl lg:text-3xl">
-                        {obra.titulo}
-                      </h3>
-                      <p className="mt-2 flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] text-white/50 uppercase">
-                        <span aria-hidden="true" className="inline-block h-px w-5 bg-brand" />
-                        {obra.local}
-                      </p>
-                    </div>
-                  </div>
+                <div>
+                  <h3 className="font-display text-xl leading-tight text-white sm:text-2xl lg:text-3xl">
+                    {obra.titulo}
+                  </h3>
+                  <p className="mt-2 flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] text-white/50 uppercase">
+                    <span aria-hidden="true" className="inline-block h-px w-5 bg-brand" />
+                    {obra.local}
+                  </p>
                 </div>
 
                 <div className="mt-6 grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">

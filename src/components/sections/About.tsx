@@ -176,16 +176,16 @@ export function About() {
               className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
             />
 
-            {/* Selo: bloco dourado sólido, na assinatura da casa */}
-            <div className="absolute bottom-5 left-5 flex items-stretch overflow-hidden rounded-xl">
-              <p className="font-display bg-brand px-4 py-2.5 text-xl leading-none text-black">
+            {/* Selo discreto: só o número em dourado e uma linha de texto */}
+            <div className="absolute bottom-5 left-5 flex items-baseline gap-2.5">
+              <span className="font-display text-brand text-3xl leading-none sm:text-4xl">
                 {anosDeEmpresa}
-              </p>
-              <p className="flex items-center bg-black/70 px-3.5 text-[10px] leading-tight font-bold tracking-[0.16em] text-white uppercase backdrop-blur-sm">
+              </span>
+              <span className="text-[13px] leading-tight font-medium text-white/90">
                 anos movendo
                 <br />
                 terra em Minas
-              </p>
+              </span>
             </div>
           </div>
         </Reveal>

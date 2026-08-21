@@ -43,16 +43,6 @@ export const obras: Obra[] = [
     ],
   },
   {
-    titulo: 'Terraplenagem em área rural',
-    local: 'Região de Uberlândia',
-    fotos: [
-      {
-        src: './obras/rural-komatsu.jpg',
-        alt: 'Pá carregadeira Komatsu preparando o terreno em propriedade rural',
-      },
-    ],
-  },
-  {
     titulo: 'Bolsão para captação de água',
     local: 'Área rural',
     fotos: [
