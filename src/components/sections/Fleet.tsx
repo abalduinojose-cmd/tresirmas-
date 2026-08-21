@@ -1,8 +1,16 @@
+import { useState } from 'react'
 import { machines, type Machine } from '../../data/machines'
 import { site } from '../../data/site'
 import { Reveal } from '../ui/Reveal'
 import { SectionTag } from '../ui/SectionTag'
+import { Lightbox, type ItemLightbox } from '../ui/Lightbox'
+import { IconExpand } from '../ui/Icons'
 import { useAutoplayInView } from '../../hooks/useAutoplayInView'
+
+/** Só as máquinas já fotografadas entram no visualizador ampliado. */
+const comFoto: (ItemLightbox & { nome: string })[] = machines
+  .filter((m): m is Machine & { photo: string } => Boolean(m.photo))
+  .map((m) => ({ src: m.photo, titulo: m.name, descricao: m.description, nome: m.name }))
 
 /** Vídeo da máquina em ação (lazy: só toca quando visível). */
 function MachineVideo({ machine }: { machine: Machine & { video: string } }) {
@@ -56,6 +64,14 @@ function MachinePlaceholder() {
  * mesmo com máquinas em vídeo, foto ou ainda sem registro.
  */
 export function Fleet() {
+  const [ampliada, setAmpliada] = useState<number | null>(null)
+
+  /** Abre o visualizador na máquina clicada. */
+  const abrir = (nome: string) => {
+    const i = comFoto.findIndex((f) => f.nome === nome)
+    if (i >= 0) setAmpliada(i)
+  }
+
   return (
     <section id="frota" className="bg-neutral-50 py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
@@ -99,6 +115,23 @@ export function Fleet() {
                   className="absolute inset-x-0 bottom-0 z-10 h-[3px] origin-left scale-x-0 bg-brand transition-transform duration-500 ease-out group-hover:scale-x-100"
                 />
 
+                {/* Clique abre a foto ampliada (só nas máquinas já fotografadas) */}
+                {machine.photo && (
+                  <button
+                    type="button"
+                    onClick={() => abrir(machine.name)}
+                    aria-label={`Ver a foto da ${machine.name} ampliada`}
+                    className="absolute inset-0 z-20 cursor-zoom-in"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-black/40 text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 sm:top-4 sm:right-4"
+                    >
+                      <IconExpand className="h-4 w-4" />
+                    </span>
+                  </button>
+                )}
+
                 <div className="absolute inset-x-0 bottom-0 z-10 p-3.5 sm:p-5">
                   <h3 className="font-display text-[12px] leading-[1.15] text-white transition-transform duration-500 ease-out group-hover:-translate-y-0.5 sm:text-lg lg:text-xl">
                     <span className="sm:hidden">{comQuebraSuave(machine.name)}</span>
@@ -128,6 +161,13 @@ export function Fleet() {
           </p>
         </Reveal>
       </div>
+
+      <Lightbox
+        itens={comFoto}
+        indice={ampliada}
+        aoFechar={() => setAmpliada(null)}
+        aoTrocar={setAmpliada}
+      />
     </section>
   )
 }
