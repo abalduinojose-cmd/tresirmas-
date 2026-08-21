@@ -73,7 +73,7 @@ export function Fleet() {
         <div className="mt-9 grid grid-cols-2 gap-3 sm:gap-4 md:mt-11 lg:grid-cols-3 lg:gap-5">
           {machines.map((machine, i) => (
             <Reveal key={machine.name} delay={(i % 3) * 0.05}>
-              <article className="group relative aspect-[5/4] overflow-hidden rounded-xl bg-neutral-900 ring-1 ring-black/5 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-neutral-900/25 sm:rounded-2xl">
+              <article className="group relative aspect-[5/4] overflow-hidden rounded-2xl bg-neutral-900 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-neutral-900/20">
                 {machine.video ? (
                   <MachineVideo machine={{ ...machine, video: machine.video }} />
                 ) : machine.photo ? (
@@ -90,28 +90,21 @@ export function Fleet() {
                 {/* Véu que garante a leitura do nome sobre qualquer imagem */}
                 <div
                   aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black via-black/55 to-transparent"
+                  className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/45 to-transparent transition-opacity duration-500 group-hover:opacity-95"
                 />
 
-                {/* Traço dourado corre no topo ao passar o mouse */}
+                {/* Fio dourado que cresce na base ao passar o mouse */}
                 <span
                   aria-hidden="true"
-                  className="absolute top-0 -left-full z-10 h-[3px] w-full bg-brand transition-transform duration-700 ease-out group-hover:translate-x-[200%]"
+                  className="absolute inset-x-0 bottom-0 z-10 h-[3px] origin-left scale-x-0 bg-brand transition-transform duration-500 ease-out group-hover:scale-x-100"
                 />
-
-                <span
-                  aria-hidden="true"
-                  className="font-display absolute top-3 left-3.5 z-10 text-[11px] text-brand/80 sm:text-xs"
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
 
                 <div className="absolute inset-x-0 bottom-0 z-10 p-3.5 sm:p-5">
-                  <h3 className="font-display text-[12px] leading-[1.15] text-white sm:text-lg lg:text-xl">
+                  <h3 className="font-display text-[12px] leading-[1.15] text-white transition-transform duration-500 ease-out group-hover:-translate-y-0.5 sm:text-lg lg:text-xl">
                     <span className="sm:hidden">{comQuebraSuave(machine.name)}</span>
                     <span className="hidden sm:inline">{machine.name}</span>
                   </h3>
-                  <p className="mt-1.5 hidden text-[13px] leading-relaxed text-white/60 sm:block">
+                  <p className="mt-1.5 hidden text-[13px] leading-relaxed text-white/60 transition-colors duration-500 group-hover:text-white/80 sm:block">
                     {machine.description}
                   </p>
                 </div>

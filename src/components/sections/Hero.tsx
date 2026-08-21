@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'motion/react'
 import type { ReactNode } from 'react'
 import { anosDeEmpresa, site } from '../../data/site'
 import { ButtonLink } from '../ui/Button'
-import { IconChevronDown, IconWhatsApp } from '../ui/Icons'
+import { IconArrowUpRight, IconChevronDown, IconWhatsApp } from '../ui/Icons'
 import { useMediaQuery, usePrefersReducedMotion } from '../../hooks/useMediaQuery'
 import { scrollToId } from '../../hooks/useLenis'
 
@@ -130,12 +130,19 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE, delay: 0.72 }}
-          className="mt-9 flex flex-wrap gap-4"
+          className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
         >
-          <ButtonLink href={site.whatsapp} target="_blank" rel="noopener noreferrer">
-            <IconWhatsApp className="h-4.5 w-4.5" />
+          {/* CTA principal: no celular ocupa a largura toda, para o polegar alcançar */}
+          <a
+            href={site.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-brand px-7 text-[15px] font-semibold tracking-[0.01em] text-black shadow-lg shadow-brand/20 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-brand/35 hover:brightness-105 active:scale-[0.98] sm:w-auto sm:text-base"
+          >
+            <IconWhatsApp className="h-5 w-5 shrink-0" />
             Solicitar orçamento
-          </ButtonLink>
+            <IconArrowUpRight className="h-4 w-4 shrink-0 opacity-60 transition-all duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+          </a>
           <ButtonLink
             href="#frota"
             variant="outline"
@@ -143,6 +150,7 @@ export function Hero() {
               e.preventDefault()
               scrollToId('#frota')
             }}
+            className="w-full justify-center sm:w-auto"
           >
             Nossas máquinas
           </ButtonLink>

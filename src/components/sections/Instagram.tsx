@@ -70,7 +70,7 @@ function InstagramCard({
         <>
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-black/15 transition-colors duration-300 group-hover:bg-black/25"
+            className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/20 transition-opacity duration-500 group-hover:opacity-90"
           />
           <button
             type="button"
@@ -78,13 +78,16 @@ function InstagramCard({
             aria-label={`Assistir vídeo: ${caption}`}
             className="absolute inset-0 flex cursor-pointer items-center justify-center"
           >
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand text-black shadow-lg shadow-black/30 transition-transform duration-300 ease-out group-hover:scale-110">
-              <IconPlay className="ml-0.5 h-6 w-6" />
+            {/* Play em vidro: discreto parado, dourado no hover */}
+            <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-white/10 text-white backdrop-blur-md transition-all duration-300 ease-out group-hover:scale-105 group-hover:border-brand group-hover:bg-brand group-hover:text-black">
+              <IconPlay className="ml-0.5 h-5 w-5" />
             </span>
           </button>
 
-          <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-5 pt-10">
-            <span className="text-sm font-semibold text-white">{caption}</span>
+          <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 p-4 sm:p-5">
+            <span className="block text-[13px] leading-snug font-semibold text-white sm:text-sm">
+              {caption}
+            </span>
           </figcaption>
         </>
       )}
@@ -219,25 +222,18 @@ export function Instagram() {
         </Reveal>
 
         <Reveal delay={0.12}>
-          <div className="mt-10 flex flex-col items-center gap-4 text-center">
+          <div className="mt-10 flex flex-col items-center gap-3 text-center">
             <a
               href={site.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex min-h-13 cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-full border-2 border-white/70 py-2 pr-2 pl-7 text-sm font-bold tracking-widest text-white uppercase italic transition-all duration-200 ease-out hover:border-white hover:bg-white/10 active:scale-[0.97]"
+              className="group inline-flex min-h-12 items-center gap-2.5 rounded-full border border-white/25 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:border-brand hover:bg-brand hover:text-black active:scale-[0.98]"
             >
-              <span className="relative z-10 inline-flex items-center gap-2.5">
-                <IconInstagram className="h-4.5 w-4.5" />
-                Visite nosso Instagram
-              </span>
-              <span
-                aria-hidden="true"
-                className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition-transform duration-300 ease-out group-hover:scale-110"
-              >
-                <IconArrowUpRight className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </span>
+              <IconInstagram className="h-4.5 w-4.5" />
+              Visite nosso Instagram
+              <IconArrowUpRight className="h-4 w-4 opacity-70 transition-all duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
             </a>
-            <p className="text-sm text-white/60">{site.instagramHandle}</p>
+            <p className="text-sm text-white/50">{site.instagramHandle}</p>
           </div>
         </Reveal>
       </div>

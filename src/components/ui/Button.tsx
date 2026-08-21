@@ -19,9 +19,9 @@ const variants = {
  * CTA do site: pill limpa, sem itálico nem moeda. A seta desliza para a
  * direita no hover, dando a direção sem poluir o botão.
  */
-export function ButtonLink({ variant = 'primary', children, ...rest }: ButtonLinkProps) {
+export function ButtonLink({ variant = 'primary', children, className, ...rest }: ButtonLinkProps) {
   return (
-    <a className={`${base} ${variants[variant]}`} {...rest}>
+    <a className={`${base} ${variants[variant]} ${className ?? ''}`} {...rest}>
       <span className="inline-flex items-center gap-2.5">{children}</span>
       <IconArrowUpRight
         aria-hidden="true"
