@@ -53,14 +53,14 @@ export const machines: Machine[] = [
     description: 'Gradeamento e preparo do solo para nivelar e plantar.',
     video: null,
     poster: null,
-    photo: null,
+    photo: './frota/trator-grade.webp',
   },
   {
     name: "Caminhão-Pipa d'Água",
     description: 'Água para a obra e controle de poeira nos acessos.',
     video: null,
     poster: null,
-    photo: null,
+    photo: './frota/caminhao-pipa.webp',
   },
   {
     name: 'Caminhão Basculante Truck',
@@ -74,6 +74,6 @@ export const machines: Machine[] = [
     description: 'Agilidade em acessos estreitos e obras urbanas.',
     video: null,
     poster: null,
-    photo: null,
+    photo: './frota/basculante-toco.webp',
   },
 ]
