@@ -91,7 +91,7 @@ export function SobrePage() {
           <Reveal delay={0.15}>
             <figure className="relative overflow-hidden rounded-2xl bg-neutral-950">
               <img
-                src={`${raiz}sede.jpg`}
+                src={`${raiz}sede.webp`}
                 alt={`Totem da ${site.name} na entrada da sede, em Uberlândia`}
                 className="aspect-[4/5] w-full object-cover"
               />

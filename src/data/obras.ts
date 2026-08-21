@@ -19,7 +19,7 @@ export const obras: Obra[] = [
         alt: 'Vista aérea da escavação de base para construção em Uberlândia',
       },
       {
-        src: './obras/base-escavacao.jpg',
+        src: './obras/base-escavacao.webp',
         alt: 'Escavadeira hidráulica trabalhando na escavação da base',
       },
       {
@@ -33,11 +33,11 @@ export const obras: Obra[] = [
     local: 'Uberlândia',
     fotos: [
       {
-        src: './obras/nivelamento-urbano.jpg',
+        src: './obras/nivelamento-urbano.webp',
         alt: 'Pá carregadeira nivelando o terreno rebaixado de uma obra em Uberlândia',
       },
       {
-        src: './obras/plato-pronto.jpg',
+        src: './obras/plato-pronto.webp',
         alt: 'Platô nivelado e compactado, pronto para o início da construção',
       },
     ],
@@ -47,7 +47,7 @@ export const obras: Obra[] = [
     local: 'Área rural',
     fotos: [
       {
-        src: './obras/bolsao.jpg',
+        src: './obras/bolsao.webp',
         alt: 'Bolsão escavado para captação de água em área rural',
       },
     ],

@@ -9,17 +9,17 @@ import { IconArrowUpRight, IconInstagram, IconPlay } from '../ui/Icons'
 const posts = [
   {
     video: './videos/obra-1.mp4',
-    poster: './videos/obra-1.jpg',
+    poster: './videos/obra-1.webp',
     caption: 'Nivelamento de terreno para construção',
   },
   {
     video: './videos/obra-2.mp4',
-    poster: './videos/obra-2.jpg',
+    poster: './videos/obra-2.webp',
     caption: 'Demolição e remoção de entulho',
   },
   {
     video: './videos/obra-3.mp4',
-    poster: './videos/obra-3.jpg',
+    poster: './videos/obra-3.webp',
     caption: 'Escavação e movimentação de solo',
   },
 ]

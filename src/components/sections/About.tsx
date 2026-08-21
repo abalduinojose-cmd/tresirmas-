@@ -10,23 +10,23 @@ import { IconWhatsApp } from '../ui/Icons'
 /** Fotos reais da operação, alternadas em looping ao lado do texto. */
 const fotos = [
   {
-    src: './sobre/2.jpg',
+    src: './sobre/2.webp',
     alt: 'Pá carregadeira movimentando terra em área aberta',
   },
   {
-    src: './sobre/3.jpg',
+    src: './sobre/3.webp',
     alt: 'Escavadeira hidráulica escavando o solo em obra da Três Irmãs',
   },
   {
-    src: './sobre/4.jpg',
+    src: './sobre/4.webp',
     alt: 'Motoniveladora e caminhões basculantes da frota prontos para o serviço',
   },
   {
-    src: './sobre/1.jpg',
+    src: './sobre/1.webp',
     alt: 'Pá carregadeira Komatsu preparando terreno em obra urbana de Uberlândia',
   },
   {
-    src: './sobre/5.jpg',
+    src: './sobre/5.webp',
     alt: 'Entrada da sede da Terraplanagem Três Irmãs, em Uberlândia',
   },
 ]
@@ -80,7 +80,7 @@ function CarrosselFotos() {
           key={foto.src}
           src={foto.src}
           alt=""
-          loading={i === 0 ? 'eager' : 'lazy'}
+          loading="lazy"
           className={`absolute inset-0 h-full w-full object-cover transition-opacity ease-out ${
             reduzido ? 'duration-300' : 'duration-1000'
           } ${i === atual ? 'opacity-100' : 'opacity-0'}`}

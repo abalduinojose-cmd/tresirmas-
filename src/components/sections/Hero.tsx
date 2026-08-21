@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import type { ReactNode } from 'react'
 import { anosDeEmpresa, site } from '../../data/site'
@@ -36,6 +36,9 @@ export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const isMobile = useMediaQuery('(max-width: 767px)')
   const reduced = usePrefersReducedMotion()
+  // O vídeo (2,5 MB) só entra depois que a página termina de carregar: até lá
+  // o poster segura a cena, e a primeira tela abre muito mais rápido.
+  const [liberarVideo, setLiberarVideo] = useState(false)
 
   // Parallax sutil do vídeo + fade do conteúdo ao rolar
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
@@ -44,12 +47,24 @@ export function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0])
 
   const videoSrc = isMobile ? './videos/hero-mobile.mp4' : './videos/hero-desktop.mp4'
-  const poster = isMobile ? './videos/hero-mobile.jpg' : './videos/hero-desktop.jpg'
+  const poster = isMobile ? './videos/hero-mobile.webp' : './videos/hero-desktop.webp'
+
+  // Espera a página assentar antes de buscar o vídeo
+  useEffect(() => {
+    const liberar = () => setLiberarVideo(true)
+    if (document.readyState === 'complete') {
+      const id = window.setTimeout(liberar, 200)
+      return () => window.clearTimeout(id)
+    }
+    window.addEventListener('load', liberar, { once: true })
+    return () => window.removeEventListener('load', liberar)
+  }, [])
 
   // Garante o vídeo rodando mesmo quando o navegador segura o autoplay
   useEffect(() => {
+    if (!liberarVideo) return
     videoRef.current?.play().catch(() => {})
-  }, [videoSrc])
+  }, [videoSrc, liberarVideo])
 
   return (
     <section
@@ -67,13 +82,13 @@ export function Hero() {
           key={videoSrc}
           ref={videoRef}
           className="h-full w-full object-cover"
-          src={videoSrc}
+          src={liberarVideo ? videoSrc : undefined}
           poster={poster}
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
         />
         {/* Overlay escuro + fade para a transição com a próxima seção */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/55" />
